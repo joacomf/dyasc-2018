@@ -1,6 +1,6 @@
 package ar.edu.untref.dyasc;
 
-public class Fibo {
+public class Ejecutable {
 
     public static void main(String[] args) {
     

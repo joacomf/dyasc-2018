@@ -62,7 +62,7 @@
                   <archive>
                     <manifest>
                       <addClasspath>true</addClasspath>
-                      <mainClass>ar.edu.untref.dyasc.Fibo</mainClass>
+                      <mainClass>ar.edu.untref.dyasc.Ejecutable</mainClass>
                     </manifest>
                   </archive>
                 </configuration>
