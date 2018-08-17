@@ -1,6 +1,6 @@
 package ar.edu.untref.dyasc;
 
-public class Program {
+public class Fibo {
 
     public static void main(String[] args) {
     
