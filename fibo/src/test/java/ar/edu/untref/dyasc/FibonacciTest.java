@@ -1,12 +1,22 @@
 package ar.edu.untref.dyasc;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 public class FibonacciTest {
+
+    @Test
+    public void creaSucesionDeFibonacciVacia() {
+        Fibonacci fibonacci = new Fibonacci();
+
+        List<Integer> conjuntoVacio = new LinkedList<>();
+
+        Assert.assertEquals(conjuntoVacio, fibonacci.getSucesion());
+    }
 
     @Test
     public void creaSucesionDeFibonacciCon2Iteraciones() {
