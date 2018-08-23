@@ -1,7 +1,7 @@
 package ar.edu.untref.dyasc;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -13,7 +13,7 @@ public class FibonacciTest {
     public void creaSucesionDeFibonacciVacia() {
         Fibonacci fibonacci = new Fibonacci();
 
-        List<Integer> conjuntoVacio = new LinkedList<>();
+        List<Long> conjuntoVacio = new ArrayList<>();
 
         Assert.assertEquals(conjuntoVacio, fibonacci.getSucesion());
     }
@@ -21,8 +21,8 @@ public class FibonacciTest {
     @Test
     public void creaSucesionDeFibonacciCon2Iteraciones() {
 
-        Integer[] sucesionEsperada = {0, 1};
-        List<Integer> listaEsperada = Arrays.asList(sucesionEsperada);
+        Long[] sucesionEsperada = {0L, 1L};
+        List<Long> listaEsperada = Arrays.asList(sucesionEsperada);
 
         Fibonacci fibonacci = new Fibonacci();
 
@@ -34,8 +34,8 @@ public class FibonacciTest {
     @Test
     public void creaSucesionDeFibonacciCon5Iteraciones() {
 
-        Integer[] sucesionEsperada = {0, 1, 1, 2, 3};
-        List<Integer> listaEsperada = Arrays.asList(sucesionEsperada);
+        Long[] sucesionEsperada = {0L, 1L, 1L, 2L, 3L};
+        List<Long> listaEsperada = Arrays.asList(sucesionEsperada);
 
         Fibonacci fibonacci = new Fibonacci();
 

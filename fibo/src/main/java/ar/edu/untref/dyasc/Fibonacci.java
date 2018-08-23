@@ -1,19 +1,21 @@
 package ar.edu.untref.dyasc;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Fibonacci {
 
-    List<Integer> sucesion;
+    List<Long> sucesion;
 
     public Fibonacci() {
-        this.sucesion = new LinkedList<>();
+        this.sucesion = new ArrayList<>();
     }
 
     public void generarSucesion(int n) {
 
-        int anterior = 0, actual = 1, proximo;
+        long anterior = 0;
+        long actual = 1;
+        long proximo;
 
         for (int k = 1; k <= n; ++k){
 
@@ -26,7 +28,7 @@ public class Fibonacci {
 
     }
 
-    public List<Integer> getSucesion() {
+    public List<Long> getSucesion() {
         return sucesion;
     }
 

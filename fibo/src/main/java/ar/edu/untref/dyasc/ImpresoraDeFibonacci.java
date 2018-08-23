@@ -6,7 +6,7 @@ import java.util.List;
 public class ImpresoraDeFibonacci {
 
     private static final String SEPARADOR = " ";
-    private List<Integer> listado;
+    private List<Long> listado;
     private String cabecera = "";
 
     public ImpresoraDeFibonacci(Fibonacci fibonacci) {
@@ -22,8 +22,8 @@ public class ImpresoraDeFibonacci {
         StringBuilder constructorDeString = new StringBuilder();
         constructorDeString.append(this.cabecera);
 
-        for (Iterator<Integer> iterator = listado.iterator(); iterator.hasNext();) {
-            Integer numeroEnLaSucesion = (Integer) iterator.next();
+        for (Iterator<Long> iterator = listado.iterator(); iterator.hasNext();) {
+            Long numeroEnLaSucesion = iterator.next();
 
             constructorDeString.append(SEPARADOR);
             constructorDeString.append(numeroEnLaSucesion);
@@ -32,11 +32,11 @@ public class ImpresoraDeFibonacci {
         return constructorDeString.toString();
     }
 
-    public List<Integer> getListado() {
+    public List<Long> getListado() {
         return listado;
     }
 
-    private void setListado(List<Integer> listado) {
+    private void setListado(List<Long> listado) {
         this.listado = listado;
     }
 
