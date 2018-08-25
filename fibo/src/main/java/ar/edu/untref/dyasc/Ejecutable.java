@@ -4,12 +4,12 @@ public class Ejecutable {
 
     public static void main(String[] args) {
 
-        int cantidadDeIteraciones = Integer.valueOf(args[0]);
+        LectorDeParametros lector = new LectorDeParametros(args);
 
         Fibonacci fibonacci = new Fibonacci();
-        fibonacci.generarSucesion(cantidadDeIteraciones);
+        fibonacci.generarSucesion(lector.getIteraciones());
 
-        ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(fibonacci);
+        ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(fibonacci, lector.debeSerHorizontal(), lector.debeIrAlDerecho());
 
         System.out.println(impresora.imprimir());
 

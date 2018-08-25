@@ -1,17 +1,31 @@
 package ar.edu.untref.dyasc;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 public class ImpresoraDeFibonacci {
 
-    private static final String SEPARADOR = " ";
+    private String separador = " ";
     private List<Long> listado;
     private String cabecera = "";
 
     public ImpresoraDeFibonacci(Fibonacci fibonacci) {
         this.setListado(fibonacci.getSucesion());
         this.generarCabecera();
+    }
+
+    public ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho) {
+        this.setListado(fibonacci.getSucesion());
+        this.generarCabecera();
+
+        if (!esHorizontal) {
+            this.separador = "\n";
+        }
+
+        if (!estaAlDerecho) {
+            Collections.reverse(this.getListado());
+        }
     }
 
     private void generarCabecera() {
@@ -25,7 +39,7 @@ public class ImpresoraDeFibonacci {
         for (Iterator<Long> iterator = listado.iterator(); iterator.hasNext();) {
             Long numeroEnLaSucesion = iterator.next();
 
-            constructorDeString.append(SEPARADOR);
+            constructorDeString.append(separador);
             constructorDeString.append(numeroEnLaSucesion);
         }
         

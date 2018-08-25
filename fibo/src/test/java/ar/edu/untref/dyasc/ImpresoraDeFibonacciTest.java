@@ -48,10 +48,10 @@ public class ImpresoraDeFibonacciTest {
 
         Assert.assertEquals("fibo<2>: 0 1", resultado);
     }
-    
+
     @Test
     public void imprimirSucesionDe5Posiciones() {
-        
+
         this.fibonacci.generarSucesion(5);
 
         ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci);
@@ -59,5 +59,41 @@ public class ImpresoraDeFibonacciTest {
         String resultado = impresora.imprimir();
 
         Assert.assertEquals("fibo<5>: 0 1 1 2 3", resultado);
+    }
+
+    @Test
+    public void imprimirSucesionDe5PosicionesVertical() {
+
+        this.fibonacci.generarSucesion(5);
+
+        ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci, false, true);
+
+        String resultado = impresora.imprimir();
+
+        Assert.assertEquals("fibo<5>:\n0\n1\n1\n2\n3", resultado);
+    }
+
+    @Test
+    public void imprimirSucesionDe5PosicionesVerticalYAlReves() {
+
+        this.fibonacci.generarSucesion(5);
+
+        ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci, false, false);
+
+        String resultado = impresora.imprimir();
+
+        Assert.assertEquals("fibo<5>:\n3\n2\n1\n1\n0", resultado);
+    }
+
+    @Test
+    public void imprimirSucesionDe5PosicionesHorizontalYAlReves() {
+
+        this.fibonacci.generarSucesion(5);
+
+        ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci, true, false);
+
+        String resultado = impresora.imprimir();
+
+        Assert.assertEquals("fibo<5>: 3 2 1 1 0", resultado);
     }
 }
