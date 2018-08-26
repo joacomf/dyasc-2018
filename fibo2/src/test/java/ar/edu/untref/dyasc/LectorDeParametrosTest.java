@@ -72,4 +72,11 @@ public class LectorDeParametrosTest {
         Assert.assertEquals(false, debeIrAlDerecho);
         Assert.assertEquals(true, esHorizontal);
     }
+
+    @Test(expected=OpcionesNoValidasException.class)
+    public void creaLectorConOpcionInvalidaYArrojaExcepcion() throws OpcionesNoValidasException {
+        String[] parametros = {"8", "-o=xy"};
+        new LectorDeParametros(parametros);
+
+    }
 }
