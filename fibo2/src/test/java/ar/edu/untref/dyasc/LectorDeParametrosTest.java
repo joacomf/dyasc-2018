@@ -3,16 +3,18 @@ package ar.edu.untref.dyasc;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.dyasc.excepciones.OpcionesNoValidasException;
+
 public class LectorDeParametrosTest {
 
     @Test
-    public void creaLectorDeParametros() {
+    public void creaLectorDeParametros() throws OpcionesNoValidasException {
         String[] parametros = {"5"};
         new LectorDeParametros(parametros);
     }
     
     @Test
-    public void creaLectorConOpcionVerticalYAlDerecho() {
+    public void creaLectorConOpcionVerticalYAlDerecho() throws OpcionesNoValidasException {
         String[] parametros = {"-o=vd", "5"};
         LectorDeParametros lector = new LectorDeParametros(parametros);
 
@@ -24,7 +26,7 @@ public class LectorDeParametrosTest {
     }
 
     @Test
-    public void creaLectorConOpcionHorizontalYAlDerecho() {
+    public void creaLectorConOpcionHorizontalYAlDerecho() throws OpcionesNoValidasException {
         String[] parametros = {"-o=hd", "2"};
         LectorDeParametros lector = new LectorDeParametros(parametros);
 
@@ -36,7 +38,7 @@ public class LectorDeParametrosTest {
     }
 
     @Test
-    public void creaLectorConOpcionVerticalEInverso() {
+    public void creaLectorConOpcionVerticalEInverso() throws OpcionesNoValidasException {
         String[] parametros = {"-o=vi", "5"};
         LectorDeParametros lector = new LectorDeParametros(parametros);
 
@@ -48,7 +50,7 @@ public class LectorDeParametrosTest {
     }
 
     @Test
-    public void creaLectorConOpcionHorizontalEInverso() {
+    public void creaLectorConOpcionHorizontalEInverso() throws OpcionesNoValidasException {
         String[] parametros = {"-o=hi", "5"};
         LectorDeParametros lector = new LectorDeParametros(parametros);
 
@@ -60,7 +62,7 @@ public class LectorDeParametrosTest {
     }
 
     @Test
-    public void creaLectorConOpcionHorizontalEInversoEnDistintoOrden() {
+    public void creaLectorConOpcionHorizontalEInversoEnDistintoOrden() throws OpcionesNoValidasException {
         String[] parametros = {"8", "-o=hi"};
         LectorDeParametros lector = new LectorDeParametros(parametros);
 

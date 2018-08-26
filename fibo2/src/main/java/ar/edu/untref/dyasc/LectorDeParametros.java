@@ -10,16 +10,10 @@ public class LectorDeParametros {
     private boolean debeIrAlDerecho = true;
     private boolean debeSerHorizontal = true;
 
-    public LectorDeParametros(String[] parametros) {
-
-        try {
-            for (int i = 0; i < parametros.length; i++) {
-                this.evaluarOpciones(parametros[i]);
-            }
-        } catch (Exception e) {
-            System.out.println("Opciones no validas.");
+    public LectorDeParametros(String[] parametros) throws OpcionesNoValidasException {
+        for (int i = 0; i < parametros.length; i++) {
+            this.evaluarOpciones(parametros[i]);
         }
-
     }
 
     private void evaluarOpciones(String opcion) throws OpcionesNoValidasException {
