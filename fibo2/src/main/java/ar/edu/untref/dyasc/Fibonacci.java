@@ -17,7 +17,7 @@ public class Fibonacci {
         long actual = 1;
         long proximo;
 
-        for (int k = 1; k <= n; ++k){
+        for (int k = 1; k <= n; ++k) {
 
             sucesion.add(anterior);
 

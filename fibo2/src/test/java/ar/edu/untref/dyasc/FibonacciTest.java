@@ -21,7 +21,7 @@ public class FibonacciTest {
     @Test
     public void creaSucesionDeFibonacciCon2Iteraciones() {
 
-        Long[] sucesionEsperada = {0L, 1L};
+        Long[] sucesionEsperada = { 0L, 1L };
         List<Long> listaEsperada = Arrays.asList(sucesionEsperada);
 
         Fibonacci fibonacci = new Fibonacci();
@@ -34,7 +34,7 @@ public class FibonacciTest {
     @Test
     public void creaSucesionDeFibonacciCon5Iteraciones() {
 
-        Long[] sucesionEsperada = {0L, 1L, 1L, 2L, 3L};
+        Long[] sucesionEsperada = { 0L, 1L, 1L, 2L, 3L };
         List<Long> listaEsperada = Arrays.asList(sucesionEsperada);
 
         Fibonacci fibonacci = new Fibonacci();

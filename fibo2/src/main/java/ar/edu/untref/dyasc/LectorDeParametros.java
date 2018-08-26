@@ -21,7 +21,7 @@ public class LectorDeParametros {
         if (opcion.startsWith("-o=")) {
             String[] opcionClaveValor = opcion.split("=");
             String valorDeOpcion = opcionClaveValor[1];
-            
+
             this.evaluarOpcionDeImpresion(valorDeOpcion);
         } else {
             this.setIteraciones(Integer.valueOf(opcion));
@@ -29,9 +29,9 @@ public class LectorDeParametros {
     }
 
     private void evaluarOpcionDeImpresion(String valorDeLaOpcion) throws OpcionesNoValidasException {
-        String[] opcionesValidas = {"hd", "vd", "hi", "vi"};
-        
-        if(!Arrays.asList(opcionesValidas).contains(valorDeLaOpcion)) {
+        String[] opcionesValidas = { "hd", "vd", "hi", "vi" };
+
+        if (!Arrays.asList(opcionesValidas).contains(valorDeLaOpcion)) {
             throw new OpcionesNoValidasException();
         }
 
@@ -42,7 +42,7 @@ public class LectorDeParametros {
     public boolean debeIrAlDerecho() {
         return debeIrAlDerecho;
     }
-    
+
     public boolean debeSerHorizontal() {
         return debeSerHorizontal;
     }

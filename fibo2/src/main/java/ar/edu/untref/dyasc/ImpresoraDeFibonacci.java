@@ -42,7 +42,7 @@ public class ImpresoraDeFibonacci {
             constructorDeString.append(separador);
             constructorDeString.append(numeroEnLaSucesion);
         }
-        
+
         return constructorDeString.toString();
     }
 

@@ -13,7 +13,8 @@ public class Ejecutable {
             Fibonacci fibonacci = new Fibonacci();
             fibonacci.generarSucesion(lector.getIteraciones());
 
-            ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(fibonacci, lector.debeSerHorizontal(), lector.debeIrAlDerecho());
+            ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(fibonacci, lector.debeSerHorizontal(),
+                    lector.debeIrAlDerecho());
 
             System.out.println(impresora.imprimir());
 

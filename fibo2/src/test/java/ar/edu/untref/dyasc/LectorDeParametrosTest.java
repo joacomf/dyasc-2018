@@ -9,13 +9,13 @@ public class LectorDeParametrosTest {
 
     @Test
     public void creaLectorDeParametros() throws OpcionesNoValidasException {
-        String[] parametros = {"5"};
+        String[] parametros = { "5" };
         new LectorDeParametros(parametros);
     }
-    
+
     @Test
     public void creaLectorConOpcionVerticalYAlDerecho() throws OpcionesNoValidasException {
-        String[] parametros = {"-o=vd", "5"};
+        String[] parametros = { "-o=vd", "5" };
         LectorDeParametros lector = new LectorDeParametros(parametros);
 
         boolean debeIrAlDerecho = lector.debeIrAlDerecho();
@@ -27,7 +27,7 @@ public class LectorDeParametrosTest {
 
     @Test
     public void creaLectorConOpcionHorizontalYAlDerecho() throws OpcionesNoValidasException {
-        String[] parametros = {"-o=hd", "2"};
+        String[] parametros = { "-o=hd", "2" };
         LectorDeParametros lector = new LectorDeParametros(parametros);
 
         boolean debeIrAlDerecho = lector.debeIrAlDerecho();
@@ -39,7 +39,7 @@ public class LectorDeParametrosTest {
 
     @Test
     public void creaLectorConOpcionVerticalEInverso() throws OpcionesNoValidasException {
-        String[] parametros = {"-o=vi", "5"};
+        String[] parametros = { "-o=vi", "5" };
         LectorDeParametros lector = new LectorDeParametros(parametros);
 
         boolean debeIrAlDerecho = lector.debeIrAlDerecho();
@@ -51,7 +51,7 @@ public class LectorDeParametrosTest {
 
     @Test
     public void creaLectorConOpcionHorizontalEInverso() throws OpcionesNoValidasException {
-        String[] parametros = {"-o=hi", "5"};
+        String[] parametros = { "-o=hi", "5" };
         LectorDeParametros lector = new LectorDeParametros(parametros);
 
         boolean debeIrAlDerecho = lector.debeIrAlDerecho();
@@ -63,7 +63,7 @@ public class LectorDeParametrosTest {
 
     @Test
     public void creaLectorConOpcionHorizontalEInversoEnDistintoOrden() throws OpcionesNoValidasException {
-        String[] parametros = {"8", "-o=hi"};
+        String[] parametros = { "8", "-o=hi" };
         LectorDeParametros lector = new LectorDeParametros(parametros);
 
         boolean debeIrAlDerecho = lector.debeIrAlDerecho();
@@ -73,9 +73,9 @@ public class LectorDeParametrosTest {
         Assert.assertEquals(true, esHorizontal);
     }
 
-    @Test(expected=OpcionesNoValidasException.class)
+    @Test(expected = OpcionesNoValidasException.class)
     public void creaLectorConOpcionInvalidaYArrojaExcepcion() throws OpcionesNoValidasException {
-        String[] parametros = {"8", "-o=xy"};
+        String[] parametros = { "8", "-o=xy" };
         new LectorDeParametros(parametros);
 
     }
