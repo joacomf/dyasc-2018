@@ -43,4 +43,20 @@ public class FibonacciTest {
 
         Assert.assertEquals(listaEsperada, fibonacci.getSucesion());
     }
+
+    @Test
+    public void creaSucesionDeFibonacciConSumatoria() {
+
+        Long[] sucesionEsperada = { 0L, 1L, 1L, 2L, 3L };
+        Long sumatoriaEsperada = 7L;
+
+        List<Long> listaEsperada = Arrays.asList(sucesionEsperada);
+
+        Fibonacci fibonacci = new Fibonacci();
+
+        fibonacci.generarSucesion(5);
+
+        Assert.assertEquals(listaEsperada, fibonacci.getSucesion());
+        Assert.assertEquals(sumatoriaEsperada, fibonacci.getSumatoria());
+    }
 }
