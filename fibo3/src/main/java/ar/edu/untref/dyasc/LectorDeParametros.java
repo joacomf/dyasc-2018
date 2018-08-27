@@ -9,6 +9,9 @@ public class LectorDeParametros {
     private int iteraciones;
     private boolean debeIrAlDerecho = true;
     private boolean debeSerHorizontal = true;
+    private boolean debeSerSumatoria = false;
+    private boolean debeGuardarEnArchivo = false;
+    private String nombreDeArchivo = "";
 
     public LectorDeParametros(String[] parametros) throws OpcionesNoValidasException {
         for (int i = 0; i < parametros.length; i++) {
@@ -23,9 +26,28 @@ public class LectorDeParametros {
             String valorDeOpcion = opcionClaveValor[1];
 
             this.evaluarOpcionDeImpresion(valorDeOpcion);
+        } else if (opcion.startsWith("-f=")) {
+            String[] opcionClaveValor = opcion.split("=");
+            String valorDeOpcion = opcionClaveValor[1];
+
+            this.evaluarSalidaEnArchivo(valorDeOpcion);
+        } else if (opcion.startsWith("-m=")) {
+            String[] opcionClaveValor = opcion.split("=");
+            String valorDeOpcion = opcionClaveValor[1];
+
+            this.evaluarSiEsSumatoria(valorDeOpcion);
         } else {
             this.setIteraciones(Integer.valueOf(opcion));
         }
+    }
+
+    private void evaluarSiEsSumatoria(String valorDeOpcion) {
+        this.setDebeSerSumatoria(valorDeOpcion.equals("s"));
+    }
+
+    private void evaluarSalidaEnArchivo(String valorDeOpcion) {
+        this.setDebeGuardarEnArchivo(true);
+        this.setNombreDeArchivo(valorDeOpcion);
     }
 
     private void evaluarOpcionDeImpresion(String valorDeLaOpcion) throws OpcionesNoValidasException {
@@ -53,6 +75,30 @@ public class LectorDeParametros {
 
     public void setIteraciones(int iteraciones) {
         this.iteraciones = iteraciones;
+    }
+
+    public boolean debeGuardarEnArchivo() {
+        return debeGuardarEnArchivo;
+    }
+
+    public void setDebeGuardarEnArchivo(boolean debeGuardarEnArchivo) {
+        this.debeGuardarEnArchivo = debeGuardarEnArchivo;
+    }
+
+    public String getNombreDeArchivo() {
+        return nombreDeArchivo;
+    }
+
+    public void setNombreDeArchivo(String nombreDeArchivo) {
+        this.nombreDeArchivo = nombreDeArchivo;
+    }
+
+    public boolean debeSerSumatoria() {
+        return this.debeSerSumatoria;
+    }
+
+    public void setDebeSerSumatoria(boolean debeSerSumatoria) {
+        this.debeSerSumatoria = debeSerSumatoria;
     }
 
 }

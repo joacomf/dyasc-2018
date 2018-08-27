@@ -79,4 +79,66 @@ public class LectorDeParametrosTest {
         new LectorDeParametros(parametros);
 
     }
+
+    @Test
+    public void creaLectorConOpcionHorizontalInversoYConSalida() throws OpcionesNoValidasException {
+        String[] parametros = { "8", "-o=hi", "-f=archivo.txt" };
+        LectorDeParametros lector = new LectorDeParametros(parametros);
+
+        boolean debeIrAlDerecho = lector.debeIrAlDerecho();
+        boolean esHorizontal = lector.debeSerHorizontal();
+        boolean debeGuardarEnArchivo = lector.debeGuardarEnArchivo();
+
+        Assert.assertEquals(false, debeIrAlDerecho);
+        Assert.assertEquals(true, esHorizontal);
+        Assert.assertEquals(true, debeGuardarEnArchivo);
+    }
+
+    @Test
+    public void creaLectorConOpcionHorizontalInversoYConSumatoria() throws OpcionesNoValidasException {
+        String[] parametros = { "8", "-o=hi", "-m=s" };
+        LectorDeParametros lector = new LectorDeParametros(parametros);
+
+        boolean debeIrAlDerecho = lector.debeIrAlDerecho();
+        boolean esHorizontal = lector.debeSerHorizontal();
+        boolean debeGuardarEnArchivo = lector.debeGuardarEnArchivo();
+        boolean debeSerSumatoria = lector.debeSerSumatoria();
+
+        Assert.assertEquals(false, debeIrAlDerecho);
+        Assert.assertEquals(true, esHorizontal);
+        Assert.assertEquals(false, debeGuardarEnArchivo);
+        Assert.assertEquals(true, debeSerSumatoria);
+    }
+
+    @Test
+    public void creaLectorConOpcionHorizontalInversoYConLista() throws OpcionesNoValidasException {
+        String[] parametros = { "8", "-o=hi", "-m=l" };
+        LectorDeParametros lector = new LectorDeParametros(parametros);
+
+        boolean debeIrAlDerecho = lector.debeIrAlDerecho();
+        boolean esHorizontal = lector.debeSerHorizontal();
+        boolean debeGuardarEnArchivo = lector.debeGuardarEnArchivo();
+        boolean debeSerSumatoria = lector.debeSerSumatoria();
+
+        Assert.assertEquals(false, debeIrAlDerecho);
+        Assert.assertEquals(true, esHorizontal);
+        Assert.assertEquals(false, debeGuardarEnArchivo);
+        Assert.assertEquals(false, debeSerSumatoria);
+    }
+
+    @Test
+    public void creaLectorConOpcionVerticalInversoConListaYConSalidaEnArchivo() throws OpcionesNoValidasException {
+        String[] parametros = { "10", "-o=vi", "-m=l", "-f=texto.txts" };
+        LectorDeParametros lector = new LectorDeParametros(parametros);
+
+        boolean debeIrAlDerecho = lector.debeIrAlDerecho();
+        boolean esHorizontal = lector.debeSerHorizontal();
+        boolean debeGuardarEnArchivo = lector.debeGuardarEnArchivo();
+        boolean debeSerSumatoria = lector.debeSerSumatoria();
+
+        Assert.assertEquals(false, debeIrAlDerecho);
+        Assert.assertEquals(false, esHorizontal);
+        Assert.assertEquals(true, debeGuardarEnArchivo);
+        Assert.assertEquals(false, debeSerSumatoria);
+    }
 }
