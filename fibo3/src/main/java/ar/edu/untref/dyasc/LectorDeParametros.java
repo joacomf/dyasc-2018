@@ -14,6 +14,10 @@ public class LectorDeParametros {
     private String nombreDeArchivo = "";
 
     public LectorDeParametros(String[] parametros) throws OpcionesNoValidasException {
+        analizar(parametros);
+    }
+
+    private void analizar(String[] parametros) throws OpcionesNoValidasException {
         for (int i = 0; i < parametros.length; i++) {
             this.evaluarOpciones(parametros[i]);
         }

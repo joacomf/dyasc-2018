@@ -14,15 +14,11 @@ public class ImpresoraDeFibonacci {
     private int dimension;
 
     public ImpresoraDeFibonacci(Fibonacci fibonacci) {
-        this.setListado(fibonacci.getSucesion());
-        this.setDimension(fibonacci.getDimension());
-        this.generarCabecera();
+        inicializar(fibonacci);
     }
 
     public ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho) {
-        this.setListado(fibonacci.getSucesion());
-        this.setDimension(fibonacci.getDimension());
-        this.generarCabecera();
+        this(fibonacci);
 
         if (!esHorizontal) {
             this.separador = "\n";
@@ -34,13 +30,19 @@ public class ImpresoraDeFibonacci {
     }
 
     public ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho, boolean esSumatoria) {
-        this.caracterSecuencial = "s";
-        List<Long> listado = new ArrayList<>();
-        listado.add(fibonacci.getSumatoria());
+        this(fibonacci, esHorizontal, estaAlDerecho);
 
-        this.setListado(listado);
+        if(esSumatoria) {
+            List<Long> listadoDeSucesion = new ArrayList<>();
+            listadoDeSucesion.add(fibonacci.getSumatoria());
+            this.caracterSecuencial = "s";
+            this.setListado(listadoDeSucesion);
+        }
+    }
+
+    private void inicializar(Fibonacci fibonacci) {
+        this.setListado(fibonacci.getSucesion());
         this.setDimension(fibonacci.getDimension());
-        this.generarCabecera();
     }
 
     private void generarCabecera() {
@@ -50,6 +52,7 @@ public class ImpresoraDeFibonacci {
     }
 
     public String imprimir() {
+        this.generarCabecera();
         StringBuilder constructorDeString = new StringBuilder();
         constructorDeString.append(this.cabecera);
 
