@@ -96,4 +96,15 @@ public class ImpresoraDeFibonacciTest {
 
         Assert.assertEquals("fibo<5>: 3 2 1 1 0", resultado);
     }
-}
+
+    @Test
+    public void imprimirSucesionDe5PosicionesHorizontalYAlRevesYConSumatoria() {
+
+        this.fibonacci.generarSucesion(5);
+
+        ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci, true, false, true);
+
+        String resultado = impresora.imprimir();
+
+        Assert.assertEquals("fibo<5>s: 7", resultado);
+    }}

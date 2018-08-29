@@ -7,6 +7,7 @@ public class Fibonacci {
 
     List<Long> sucesion;
     private long sumatoria;
+    private int dimension;
 
     public Fibonacci() {
         this.sucesion = new ArrayList<>();
@@ -15,6 +16,7 @@ public class Fibonacci {
     public void generarSucesion(int n) {
 
         this.setSumatoria(0);
+        this.setDimension(n);
 
         long anterior = 0;
         long actual = 1;
@@ -42,6 +44,14 @@ public class Fibonacci {
 
     public void setSumatoria(long sumatoria) {
         this.sumatoria = sumatoria;
+    }
+
+    public int getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(int dimension) {
+        this.dimension = dimension;
     }
 
 }
