@@ -1,22 +1,35 @@
 package ar.edu.untref.dyasc;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import mocks.FibonacciMock;
+
 public class ImpresoraDeFibonacciTest {
 
-    private Fibonacci fibonacci;
+    private FibonacciMock fibonacci;
+    private List<Long> listado;
 
     @Before
     public void prepararFibonacci() {
-        this.fibonacci = new Fibonacci();
+        this.fibonacci = new FibonacciMock();
+        this.listado = new ArrayList<>();
+    }
+
+    @After
+    public void limpiarListado() {
+        this.listado.clear();
     }
 
     @Test
     public void imprimirSucesionVacia() {
 
-        fibonacci.generarSucesion(0);
+        fibonacci.setSucesion(listado);
 
         ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci);
 
@@ -28,6 +41,8 @@ public class ImpresoraDeFibonacciTest {
     @Test
     public void imprimirSucesionConUnValor() {
 
+        listado.add(0L);
+        fibonacci.setSucesion(listado);
         fibonacci.generarSucesion(1);
 
         ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci);
@@ -40,7 +55,10 @@ public class ImpresoraDeFibonacciTest {
     @Test
     public void imprimirSucesionDe2Posiciones() {
 
-        this.fibonacci.generarSucesion(2);
+        listado.add(0L);
+        listado.add(1L);
+        fibonacci.setSucesion(listado);
+        fibonacci.generarSucesion(2);
 
         ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci);
 
@@ -52,7 +70,13 @@ public class ImpresoraDeFibonacciTest {
     @Test
     public void imprimirSucesionDe5Posiciones() {
 
-        this.fibonacci.generarSucesion(5);
+        listado.add(0L);
+        listado.add(1L);
+        listado.add(1L);
+        listado.add(2L);
+        listado.add(3L);
+        fibonacci.setSucesion(listado);
+        fibonacci.generarSucesion(5);
 
         ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci);
 
@@ -64,7 +88,13 @@ public class ImpresoraDeFibonacciTest {
     @Test
     public void imprimirSucesionDe5PosicionesVertical() {
 
-        this.fibonacci.generarSucesion(5);
+        listado.add(0L);
+        listado.add(1L);
+        listado.add(1L);
+        listado.add(2L);
+        listado.add(3L);
+        fibonacci.setSucesion(listado);
+        fibonacci.generarSucesion(5);
 
         ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci, false, true);
 
@@ -76,7 +106,13 @@ public class ImpresoraDeFibonacciTest {
     @Test
     public void imprimirSucesionDe5PosicionesVerticalYAlReves() {
 
-        this.fibonacci.generarSucesion(5);
+        listado.add(0L);
+        listado.add(1L);
+        listado.add(1L);
+        listado.add(2L);
+        listado.add(3L);
+        fibonacci.setSucesion(listado);
+        fibonacci.generarSucesion(5);
 
         ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci, false, false);
 
@@ -88,7 +124,13 @@ public class ImpresoraDeFibonacciTest {
     @Test
     public void imprimirSucesionDe5PosicionesHorizontalYAlReves() {
 
-        this.fibonacci.generarSucesion(5);
+        listado.add(0L);
+        listado.add(1L);
+        listado.add(1L);
+        listado.add(2L);
+        listado.add(3L);
+        fibonacci.setSucesion(listado);
+        fibonacci.generarSucesion(5);
 
         ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci, true, false);
 
@@ -100,11 +142,15 @@ public class ImpresoraDeFibonacciTest {
     @Test
     public void imprimirSucesionDe5PosicionesHorizontalYAlRevesYConSumatoria() {
 
-        this.fibonacci.generarSucesion(5);
+        fibonacci.setSucesion(listado);
+        fibonacci.setSumatoria(7);
+        fibonacci.generarSucesion(5);
 
         ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(this.fibonacci, true, false, true);
 
         String resultado = impresora.imprimir();
 
         Assert.assertEquals("fibo<5>s: 7", resultado);
-    }}
+    }
+
+}

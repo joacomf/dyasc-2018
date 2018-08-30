@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import ar.edu.untref.dyasc.interfaces.FibonacciInterface;
+
 public class ImpresoraDeFibonacci {
 
     private String separador = " ";
@@ -13,11 +15,11 @@ public class ImpresoraDeFibonacci {
     private String caracterSecuencial = "";
     private int dimension;
 
-    public ImpresoraDeFibonacci(Fibonacci fibonacci) {
+    public ImpresoraDeFibonacci(FibonacciInterface fibonacci) {
         inicializar(fibonacci);
     }
 
-    public ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho) {
+    public ImpresoraDeFibonacci(FibonacciInterface fibonacci, boolean esHorizontal, boolean estaAlDerecho) {
         this(fibonacci);
 
         if (!esHorizontal) {
@@ -29,7 +31,7 @@ public class ImpresoraDeFibonacci {
         }
     }
 
-    public ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho, boolean esSumatoria) {
+    public ImpresoraDeFibonacci(FibonacciInterface fibonacci, boolean esHorizontal, boolean estaAlDerecho, boolean esSumatoria) {
         this(fibonacci, esHorizontal, estaAlDerecho);
 
         if(esSumatoria) {
@@ -40,7 +42,7 @@ public class ImpresoraDeFibonacci {
         }
     }
 
-    private void inicializar(Fibonacci fibonacci) {
+    private void inicializar(FibonacciInterface fibonacci) {
         this.setListado(fibonacci.getSucesion());
         this.setDimension(fibonacci.getDimension());
     }

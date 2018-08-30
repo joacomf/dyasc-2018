@@ -3,7 +3,9 @@ package ar.edu.untref.dyasc;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fibonacci {
+import ar.edu.untref.dyasc.interfaces.FibonacciInterface;
+
+public class Fibonacci implements FibonacciInterface{
 
     List<Long> sucesion;
     private long sumatoria;
