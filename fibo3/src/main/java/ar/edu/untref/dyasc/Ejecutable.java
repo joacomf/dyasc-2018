@@ -9,6 +9,7 @@ public class Ejecutable {
     public static void main(String[] args) {
 
         LectorDeParametros lector;
+
         try {
             lector = new LectorDeParametros(args);
 
@@ -17,13 +18,14 @@ public class Ejecutable {
 
             ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(fibonacci, lector.debeSerHorizontal(),
                     lector.debeIrAlDerecho(), lector.debeSerSumatoria());
+            String textoDeLaImpresion = impresora.imprimir();
 
             if (lector.debeGuardarEnArchivo()) {
                 AdministradorDeArchivos administrador = new AdministradorDeArchivos();
-                administrador.guardar(impresora.imprimir(), lector.getNombreDeArchivo());
+                administrador.guardar(textoDeLaImpresion, lector.getNombreDeArchivo(), fibonacci.getDimension() );
             }
 
-            System.out.println(impresora.imprimir());
+            System.out.println(textoDeLaImpresion);
 
         } catch (OpcionesNoValidasException e) {
             System.out.println("Opciones no validas.");
