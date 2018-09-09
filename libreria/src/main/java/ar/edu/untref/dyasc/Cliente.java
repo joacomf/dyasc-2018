@@ -3,9 +3,11 @@ package ar.edu.untref.dyasc;
 public class Cliente {
 
     private String nombre;
+    private String apellido;
 
     public Cliente(String nombre, String apellido) {
         this.setNombre(nombre);
+        this.setApellido(apellido);
     }
 
     public String obtenerNombre() {
@@ -17,6 +19,10 @@ public class Cliente {
     }
 
     public String obtenerApellido() {
-        return "Diaz";
+        return this.apellido;
+    }
+
+    private void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 }

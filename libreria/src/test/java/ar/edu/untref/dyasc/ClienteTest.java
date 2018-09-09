@@ -7,9 +7,10 @@ public class ClienteTest {
 
     @Test
     public void seCreaClienteDeNombrePepe() {
-        Cliente cliente = new Cliente("pepe", "Campaner");
+        Cliente cliente = new Cliente("Pepe", "Campaner");
 
-        Assert.assertEquals("pepe", cliente.obtenerNombre());
+        Assert.assertEquals("Pepe", cliente.obtenerNombre());
+        Assert.assertEquals("Campaner", cliente.obtenerApellido());
     }
 
     @Test
