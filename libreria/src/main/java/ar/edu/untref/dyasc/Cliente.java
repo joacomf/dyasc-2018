@@ -1,6 +1,10 @@
 package ar.edu.untref.dyasc;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Cliente {
 
@@ -46,6 +50,14 @@ public class Cliente {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public Map<Integer, Producto> obtenerListadoCompletoDeProductosComprados() {
+        return new HashMap<Integer, Producto>();
+    }
+
+    public List<Suscribible> obtenerListaDeSuscripciones() {
+        return new ArrayList<Suscribible>();
     }
 
 }
