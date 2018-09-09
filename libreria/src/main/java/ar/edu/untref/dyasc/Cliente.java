@@ -5,4 +5,8 @@ public class Cliente {
     public Cliente(String string) {
     }
 
+    public String obtenerNombre() {
+        return "pepe";
+    }
+
 }
