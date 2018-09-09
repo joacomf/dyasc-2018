@@ -14,7 +14,7 @@ public class LibreriaTest {
     public void seVendeUnProductoLibroAlClienteDeNombrePepe() {
         Libreria libreria = new Libreria();
 
-        Cliente cliente = new Cliente("pepe");
+        Cliente cliente = new Cliente("pepe", "");
         Producto libro = new Producto();
 
         boolean vendioLibroACliente = libreria.venderProducto(libro, cliente);
