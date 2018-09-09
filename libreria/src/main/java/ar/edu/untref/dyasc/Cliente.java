@@ -7,11 +7,13 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private LocalDate fechaNacimiento;
+    private String direccion;
 
     public Cliente(String nombre, String apellido, String direccion, LocalDate fechaNacimiento) {
         this.setNombre(nombre);
         this.setApellido(apellido);
         this.setFechaNacimiento(fechaNacimiento);
+        this.setDireccion(direccion);
     }
 
     public String obtenerNombre() {
@@ -39,6 +41,11 @@ public class Cliente {
     }
 
     public String obtenerDireccion() {
-        return "Junin 320";
+        return this.direccion;
     }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
 }

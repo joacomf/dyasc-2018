@@ -17,11 +17,12 @@ public class ClienteTest {
 
     @Test
     public void seCreaClienteDeNombreLuisYApellidoDiazConDireccionDorrego418YFechaDeNacimientoEl1DeEneroDe1958() {
-        Cliente cliente = new Cliente("Luis", "Diaz", null, LocalDate.of(1958, 1, 1));
+        Cliente cliente = new Cliente("Luis", "Diaz", "Dorrego 418", LocalDate.of(1958, 1, 1));
 
         Assert.assertEquals("Luis", cliente.obtenerNombre());
         Assert.assertEquals("Diaz", cliente.obtenerApellido());
         Assert.assertEquals(LocalDate.of(1958, 1, 1), cliente.obtenerFechaNacimiento());
+        Assert.assertEquals("Dorrego 418", cliente.obtenerDireccion());
     }
 
     @Test
