@@ -60,4 +60,8 @@ public class Cliente {
         return new ArrayList<Suscribible>();
     }
 
+    public List<Producto> obtenerListadoDeProductosEnElMesDelAño(int mes, int año) {
+        return new ArrayList<Producto>();
+    }
+
 }

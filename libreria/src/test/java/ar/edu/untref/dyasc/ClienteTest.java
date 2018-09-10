@@ -59,4 +59,13 @@ public class ClienteTest {
 
         Assert.assertEquals(new ArrayList<Suscribible>(), listaDeSuscripciones);
     }
+
+    @Test
+    public void seObtieneListadoDeProductosVacioDelClienteEnElMes1() {
+        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, "Junin 320", LocalDate.of(1978, 2, 2));
+
+        List<Producto> listaDeProductos = cliente.obtenerListadoDeProductosEnElMesDelAño(1, 2018);
+
+        Assert.assertEquals(new ArrayList<Producto>(), listaDeProductos);
+    }
 }
