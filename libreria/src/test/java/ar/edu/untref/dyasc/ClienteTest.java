@@ -64,8 +64,23 @@ public class ClienteTest {
     public void seObtieneListadoDeProductosVacioDelClienteEnElMes1YAño2018() {
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, "Junin 320", LocalDate.of(1978, 2, 2));
 
-        List<Producto> listaDeProductos = cliente.obtenerListadoDeProductosEnElMesDelAño(1, 2018);
+        LocalDate fecha = LocalDate.of(2018, 1, 1);
+        List<Producto> listaDeProductos = cliente.obtenerListadoDeProductosEnElMesYAñoDeLaFecha(fecha);
 
-        Assert.assertEquals(new ArrayList<Producto>(), listaDeProductos);
+        Assert.assertEquals(null, listaDeProductos);
+    }
+
+    @Test
+    public void seObtieneListadoDeProductosDelClienteEnElMes5YAño2018() {
+        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, "Junin 320", LocalDate.of(1978, 2, 2));
+        Producto productoDePrueba = new Producto();
+        LocalDate fechaDeCompra = LocalDate.of(2018, 5, 12);
+        ArrayList<Producto> listaStub = new ArrayList<Producto>();
+        listaStub.add(productoDePrueba);
+
+        cliente.comprarProducto(productoDePrueba, fechaDeCompra);
+        List<Producto> listaDeProductos = cliente.obtenerListadoDeProductosEnElMesYAñoDeLaFecha(fechaDeCompra);
+
+        Assert.assertEquals(listaStub, listaDeProductos);
     }
 }

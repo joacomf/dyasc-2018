@@ -1,6 +1,7 @@
 package ar.edu.untref.dyasc;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,12 +13,15 @@ public class Cliente {
     private String apellido;
     private LocalDate fechaNacimiento;
     private String direccion;
+    private Map<Integer, List<Producto>> mapaDeProductos;
 
     public Cliente(String nombre, String apellido, String direccion, LocalDate fechaNacimiento) {
         this.setNombre(nombre);
         this.setApellido(apellido);
         this.setFechaNacimiento(fechaNacimiento);
         this.setDireccion(direccion);
+
+        this.mapaDeProductos = new HashMap<>();
     }
 
     public String obtenerNombre() {
@@ -60,8 +64,30 @@ public class Cliente {
         return new ArrayList<Suscribible>();
     }
 
-    public List<Producto> obtenerListadoDeProductosEnElMesDelAño(int mes, int año) {
-        return new ArrayList<Producto>();
+    public List<Producto> obtenerListadoDeProductosEnElMesYAñoDeLaFecha(LocalDate fecha) {
+        Integer fechaEnClave = obtenerFechaEnClave(fecha);
+
+        return this.mapaDeProductos.get(fechaEnClave);
+    }
+
+    public void comprarProducto(Producto producto, LocalDate fecha) {
+        Integer fechaEnClave = obtenerFechaEnClave(fecha);
+
+        List<Producto> listaDeProductos = this.mapaDeProductos.get(fechaEnClave);
+
+        if(listaDeProductos == null) {
+            listaDeProductos = new ArrayList<>();
+            mapaDeProductos.put(fechaEnClave, listaDeProductos);
+        }
+
+        listaDeProductos.add(producto);
+    }
+
+    private Integer obtenerFechaEnClave(LocalDate fecha) {
+        DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("yyyyM");
+        String fechaFormateada = fecha.format(formateadorDeFecha);
+        Integer fechaEnClave = Integer.valueOf(fechaFormateada);
+        return fechaEnClave;
     }
 
 }
