@@ -61,7 +61,7 @@ public class ClienteTest {
     }
 
     @Test
-    public void seObtieneListadoDeProductosVacioDelClienteEnElMes1() {
+    public void seObtieneListadoDeProductosVacioDelClienteEnElMes1YAño2018() {
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, "Junin 320", LocalDate.of(1978, 2, 2));
 
         List<Producto> listaDeProductos = cliente.obtenerListadoDeProductosEnElMesDelAño(1, 2018);
