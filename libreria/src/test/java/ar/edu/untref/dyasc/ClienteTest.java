@@ -46,9 +46,9 @@ public class ClienteTest {
     public void seCreaClienteConMapaDeProductosVacio() {
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, "Junin 320", LocalDate.of(1978, 2, 2));
 
-        Map<Integer, Producto> listaDeProductos = cliente.obtenerListadoCompletoDeProductosComprados();
+        Map<Integer, List<Producto>> listaDeProductos = cliente.obtenerListadoCompletoDeProductosComprados();
 
-        Assert.assertEquals(new HashMap<Integer, Producto>(), listaDeProductos);
+        Assert.assertEquals(new HashMap<Integer, List<Producto>>(), listaDeProductos);
     }
 
     @Test

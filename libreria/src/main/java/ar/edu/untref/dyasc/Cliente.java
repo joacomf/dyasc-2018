@@ -56,8 +56,8 @@ public class Cliente {
         this.direccion = direccion;
     }
 
-    public Map<Integer, Producto> obtenerListadoCompletoDeProductosComprados() {
-        return new HashMap<Integer, Producto>();
+    public Map<Integer, List<Producto>> obtenerListadoCompletoDeProductosComprados() {
+        return new HashMap<Integer,  List<Producto>>();
     }
 
     public List<Suscribible> obtenerListaDeSuscripciones() {
