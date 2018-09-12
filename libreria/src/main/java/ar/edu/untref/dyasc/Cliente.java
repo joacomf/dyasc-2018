@@ -65,21 +65,17 @@ public class Cliente {
     }
 
     public List<Producto> obtenerListadoDeProductosEnElMesYAñoDeLaFecha(LocalDate fecha) {
-        DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("yyyyM");
-        String fechaFormateada = fecha.format(formateadorDeFecha);
-        Integer fechaEnClave = Integer.valueOf(fechaFormateada);
+        Integer fechaEnClave = obtenerFechaClave(fecha);
 
         return this.mapaDeProductos.get(fechaEnClave);
     }
 
     public void comprarProducto(Producto producto, LocalDate fecha) {
-        DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("yyyyM");
-        String fechaFormateada = fecha.format(formateadorDeFecha);
-        Integer fechaEnClave = Integer.valueOf(fechaFormateada);
+        Integer fechaEnClave = obtenerFechaClave(fecha);
 
         List<Producto> listaDeProductos = this.mapaDeProductos.get(fechaEnClave);
 
-        if(listaDeProductos == null) {
+        if (listaDeProductos == null) {
             listaDeProductos = new ArrayList<>();
             mapaDeProductos.put(fechaEnClave, listaDeProductos);
         }
@@ -87,8 +83,20 @@ public class Cliente {
         listaDeProductos.add(producto);
     }
 
-    public double obtenerResumenDeCuentaCorrienteDelMes(int mes) {
-        return 50.2;
+    public double obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(LocalDate fecha) {
+        List<Producto> listadoDeProductosDelMes = this.obtenerListadoDeProductosEnElMesYAñoDeLaFecha(fecha);
+        double resumenDelMes = listadoDeProductosDelMes.stream()
+                                                       .mapToDouble(Producto::obtenerPrecio)
+                                                       .sum();
+
+        return resumenDelMes;
+    }
+
+    private Integer obtenerFechaClave(LocalDate fecha) {
+        DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("yyyyM");
+        String fechaFormateada = fecha.format(formateadorDeFecha);
+        Integer fechaEnClave = Integer.valueOf(fechaFormateada);
+        return fechaEnClave;
     }
 
 }

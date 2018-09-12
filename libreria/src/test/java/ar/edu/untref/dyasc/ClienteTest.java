@@ -73,7 +73,7 @@ public class ClienteTest {
     @Test
     public void seObtieneListadoDeProductosDelClienteEnElMes5YAño2018() {
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, "Junin 320", LocalDate.of(1978, 2, 2));
-        Producto productoDePrueba = new Producto();
+        Producto productoDePrueba = new Producto(0);
         LocalDate fechaDeCompra = LocalDate.of(2018, 5, 12);
         ArrayList<Producto> listaStub = new ArrayList<Producto>();
         listaStub.add(productoDePrueba);
@@ -96,8 +96,30 @@ public class ClienteTest {
         listaStub.add(productoDePrueba);
 
         cliente.comprarProducto(productoDePrueba, fechaDeCompra);
-        double resumenDelMesDeJunio = cliente.obtenerResumenDeCuentaCorrienteDelMes(5);
+        double resumenDelMesDeJunio = cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(fechaDeCompra);
 
         Assert.assertEquals(precioDeVenta, resumenDelMesDeJunio, 0.01);
+    }
+
+    @Test
+    public void clienteCompraLibroYCuadernoYSeObtieneElSaldoDeFinDeMes() {
+        double precioDeVentaLibro = 30.2;
+        double precioDeVentaArticuloDeLibreria = 70.0;
+
+        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, "Junin 320", LocalDate.of(1978, 2, 2));
+        Libro libroDePrueba = new Libro(precioDeVentaLibro);
+        ArticuloDeLibreria cuadernoDePrueba = new ArticuloDeLibreria(precioDeVentaArticuloDeLibreria);
+        ArrayList<Producto> listaStub = new ArrayList<Producto>();
+        LocalDate fechaDeCompra = LocalDate.of(2018, 5, 12);
+
+        listaStub.add(libroDePrueba);
+        listaStub.add(cuadernoDePrueba);
+
+        cliente.comprarProducto(libroDePrueba, fechaDeCompra);
+        cliente.comprarProducto(cuadernoDePrueba, fechaDeCompra);
+
+        double resumenDelMesDeJunio = cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(fechaDeCompra);
+
+        Assert.assertEquals(100.2, resumenDelMesDeJunio, 0.01);
     }
 }
