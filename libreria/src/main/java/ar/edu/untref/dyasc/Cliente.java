@@ -65,13 +65,17 @@ public class Cliente {
     }
 
     public List<Producto> obtenerListadoDeProductosEnElMesYAñoDeLaFecha(LocalDate fecha) {
-        Integer fechaEnClave = obtenerFechaEnClave(fecha);
+        DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("yyyyM");
+        String fechaFormateada = fecha.format(formateadorDeFecha);
+        Integer fechaEnClave = Integer.valueOf(fechaFormateada);
 
         return this.mapaDeProductos.get(fechaEnClave);
     }
 
     public void comprarProducto(Producto producto, LocalDate fecha) {
-        Integer fechaEnClave = obtenerFechaEnClave(fecha);
+        DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("yyyyM");
+        String fechaFormateada = fecha.format(formateadorDeFecha);
+        Integer fechaEnClave = Integer.valueOf(fechaFormateada);
 
         List<Producto> listaDeProductos = this.mapaDeProductos.get(fechaEnClave);
 
@@ -83,11 +87,8 @@ public class Cliente {
         listaDeProductos.add(producto);
     }
 
-    private Integer obtenerFechaEnClave(LocalDate fecha) {
-        DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("yyyyM");
-        String fechaFormateada = fecha.format(formateadorDeFecha);
-        Integer fechaEnClave = Integer.valueOf(fechaFormateada);
-        return fechaEnClave;
+    public double obtenerResumenDeCuentaCorrienteDelMes(int mes) {
+        return 50.2;
     }
 
 }

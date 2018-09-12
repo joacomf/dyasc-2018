@@ -83,4 +83,21 @@ public class ClienteTest {
 
         Assert.assertEquals(listaStub, listaDeProductos);
     }
+
+    @Test
+    public void clienteCompraLibroYSeObtieneElSaldoDeFinDeMes() {
+        double precioDeVenta = 50.2;
+
+        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, "Junin 320", LocalDate.of(1978, 2, 2));
+        Libro productoDePrueba = new Libro(precioDeVenta);
+        ArrayList<Producto> listaStub = new ArrayList<Producto>();
+        LocalDate fechaDeCompra = LocalDate.of(2018, 5, 12);
+
+        listaStub.add(productoDePrueba);
+
+        cliente.comprarProducto(productoDePrueba, fechaDeCompra);
+        double resumenDelMesDeJunio = cliente.obtenerResumenDeCuentaCorrienteDelMes(5);
+
+        Assert.assertEquals(precioDeVenta, resumenDelMesDeJunio, 0.01);
+    }
 }
