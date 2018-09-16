@@ -10,19 +10,24 @@ import java.time.format.DateTimeFormatter;
 
 public class Bitacora {
 
+    private static DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+    private static String propiedadDeDestino = System.getProperty("DestinoBitacora");
+
     public static void registrar(String mensaje) {
         LocalDateTime fechaDelInstante = LocalDateTime.now();
-        DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
         String fechaFormateada = fechaDelInstante.format(formateadorDeFecha);
 
         String textoARegistrar = fechaFormateada + " - " + mensaje;
 
-        agregarLineaEnArchivoDeBitacora(textoARegistrar);
-        System.out.println(textoARegistrar);
+        if (propiedadDeDestino != null) {
+            agregarLineaEnArchivoDeBitacora(textoARegistrar);
+        } else {
+            System.out.println(textoARegistrar);
+        }
     }
 
     private static void agregarLineaEnArchivoDeBitacora(String textoAImprimir) {
-        File archivo = new File("bitacora.txt");
+        File archivo = new File(propiedadDeDestino);
 
         try {
             Writer escritor = new FileWriter(archivo, true);
