@@ -115,7 +115,7 @@ public class ClienteTest {
 
         double resumenDelMesDeJunio = cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(fechaDeCompra);
 
-        Assert.assertEquals(100.2, resumenDelMesDeJunio, 0.01);
+        Assert.assertEquals(114.9, resumenDelMesDeJunio, 0.01);
     }
 
     @Test

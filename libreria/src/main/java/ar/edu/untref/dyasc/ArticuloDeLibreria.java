@@ -6,4 +6,8 @@ public class ArticuloDeLibreria extends Producto {
         super(precioDeVenta);
     }
 
+    @Override
+    public double obtenerPrecio() {
+        return super.obtenerPrecio() * 1.21;
+    }
 }

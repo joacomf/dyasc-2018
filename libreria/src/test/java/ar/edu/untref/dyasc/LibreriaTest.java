@@ -38,7 +38,7 @@ public class LibreriaTest {
         libreria.venderProducto(hojas, cliente);
         libreria.venderProducto(packDeLapices, cliente);
 
-        Assert.assertEquals(500.0, cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(LocalDate.now()), 0.1);
+        Assert.assertEquals(563.0, cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(LocalDate.now()), 0.1);
     }
 
     @Test
@@ -53,5 +53,17 @@ public class LibreriaTest {
         libreria.venderSuscripcionAProducto(revista, cliente);
 
         Assert.assertEquals(1000.0, cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(LocalDate.now()), 0.1);
+    }
+
+    @Test
+    public void seVendeaArticuloDeLibreriaYSeVerificaQueSeCobreElIVA() {
+        Libreria libreria = new Libreria();
+
+        Cliente cliente = new Cliente("Pepe", "Ruiz", "Azcuénaga 876", LocalDate.of(1988, 2, 11));
+        Producto papel = new ArticuloDeLibreria(100.0);
+
+        libreria.venderProducto(papel, cliente);
+
+        Assert.assertEquals(121.0, cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(LocalDate.now()), 0.1);
     }
 }
