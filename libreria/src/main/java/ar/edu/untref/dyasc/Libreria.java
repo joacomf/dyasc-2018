@@ -12,4 +12,8 @@ public class Libreria {
         cliente.comprarProducto(articulo, LocalDate.now());
     }
 
+    public double deudaDelClienteAlMesYAñoDeLaFecha(LocalDate fechaDeCompra) {
+        return 0;
+    }
+
 }
