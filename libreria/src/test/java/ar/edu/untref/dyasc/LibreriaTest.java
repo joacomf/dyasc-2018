@@ -11,16 +11,34 @@ public class LibreriaTest {
     }
 
     @Test
-    public void seVendeUnProductoLibroAlClienteDeNombrePepe() {
+    public void laLibreriaTieneClienteAlCualSeVendeUnLibro() {
         Libreria libreria = new Libreria();
 
-        Cliente cliente = new Cliente("pepe", null, null, null);
-        Producto libro = new Producto(0);
+        Cliente cliente = new Cliente("Pepe", "Diaz", 1230495, null, null);
+        Producto libro = new Libro(120);
 
-        boolean vendioLibroACliente = libreria.venderProducto(libro, cliente);
+        libreria.agregarCliente(cliente);
+        libreria.venderProducto(libro, cliente);
 
-        Assert.assertTrue(vendioLibroACliente);
+        double deudaDelCliente = libreria.cuantoDebeElClienteEsteMes(cliente);
 
+        Assert.assertEquals(120.0, deudaDelCliente, 0.1);
     }
 
+    @Test
+    public void laLibreriaTieneClienteAlCualSeVendeUnLibroYUnArticuloDeLibreria() {
+        Libreria libreria = new Libreria();
+
+        Cliente cliente = new Cliente("Pepe", "Diaz", 1230495, null, null);
+        Producto libro = new Libro(120);
+        ArticuloDeLibreria lapicero = new ArticuloDeLibreria(120);
+
+        libreria.agregarCliente(cliente);
+        libreria.venderProducto(libro, cliente);
+        libreria.venderProducto(lapicero, cliente);
+
+        double deudaDelCliente = libreria.cuantoDebeElClienteEsteMes(cliente);
+
+        Assert.assertEquals(240.0, deudaDelCliente, 0.1);
+    }
 }

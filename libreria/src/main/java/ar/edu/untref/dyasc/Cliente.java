@@ -11,14 +11,16 @@ public class Cliente {
 
     private String nombre;
     private String apellido;
+    private Integer dni;
     private LocalDate fechaNacimiento;
     private String direccion;
     private Map<Integer, List<Producto>> mapaDeProductos;
     private List<ProductoSuscribible> listadoDeSuscripciones;
 
-    public Cliente(String nombre, String apellido, String direccion, LocalDate fechaNacimiento) {
+    public Cliente(String nombre, String apellido, Integer dni, String direccion, LocalDate fechaNacimiento) {
         this.setNombre(nombre);
         this.setApellido(apellido);
+        this.setDni(dni);
         this.setFechaNacimiento(fechaNacimiento);
         this.setDireccion(direccion);
 
@@ -113,6 +115,14 @@ public class Cliente {
         String fechaFormateada = fecha.format(formateadorDeFecha);
         Integer fechaEnClave = Integer.valueOf(fechaFormateada);
         return fechaEnClave;
+    }
+
+    public Integer getDni() {
+        return dni;
+    }
+
+    public void setDni(Integer dni) {
+        this.dni = dni;
     }
 
 }
