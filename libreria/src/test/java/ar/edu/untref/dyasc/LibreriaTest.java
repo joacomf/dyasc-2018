@@ -30,7 +30,7 @@ public class LibreriaTest {
 
         double deudaDelCliente = libreria.cuantoDebeElClienteEsteMes(cliente);
 
-        Assert.assertEquals(120.0, deudaDelCliente, 0.1);
+        Assert.assertEquals(114.0, deudaDelCliente, 0.1);
     }
 
     @Test
@@ -70,9 +70,9 @@ public class LibreriaTest {
         cliente.comprarProducto(libroDePrueba, fechaDeCompra);
         cliente.comprarProducto(cuadernoDePrueba, fechaDeCompra);
 
-        double resumenDelMesDeJunio = cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(mes, año);
+        double resumenDelMesDeJunio = libreria.deudaDelClienteEnElMesYAño(mes, año, cliente);
 
-        Assert.assertEquals(114.9, resumenDelMesDeJunio, 0.01);
+        Assert.assertEquals(109.15, resumenDelMesDeJunio, 0.01);
     }
 
     @Test
@@ -90,7 +90,6 @@ public class LibreriaTest {
         Integer mes = fechaDeCompra.getMonthValue();
         Integer año = fechaDeCompra.getYear();
 
-        //List<ProductoSuscribible> listadoSuscripcionesStub = new ArrayList<>();
 
         libreria.venderProducto(libroDePrueba, cliente, fechaDeCompra);
         libreria.venderProducto(revistaDePrueba, cliente, fechaDeCompra);
@@ -114,7 +113,7 @@ public class LibreriaTest {
 
         double deudaDelCliente = libreria.cuantoDebeElClienteEsteMes(cliente);
 
-        Assert.assertEquals(265.2, deudaDelCliente, 0.1);
+        Assert.assertEquals(251.93, deudaDelCliente, 0.1);
     }
 
     @Test
@@ -154,7 +153,9 @@ public class LibreriaTest {
         int mes = fecha.getMonthValue();
         int año = fecha.getYear();
 
-        Assert.assertEquals(563.0, cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(mes, año), 0.1);
+        double deudaDelCliente = libreria.deudaDelClienteEnElMesYAño(mes, año, cliente);
+
+        Assert.assertEquals(534.85, deudaDelCliente, 0.1);
     }
 
     @Test
@@ -178,7 +179,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void seVendeaArticuloDeLibreriaYSeVerificaQueSeCobreElIVA() {
+    public void seVendeArticuloDeLibreriaYSeVerificaQueSeCobreElIVA() {
         Libreria libreria = new Libreria();
 
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
@@ -190,9 +191,10 @@ public class LibreriaTest {
         int mes = fecha.getMonthValue();
         int año = fecha.getYear();
 
-        Assert.assertEquals(121.0, cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(mes, año), 0.1);
+        Assert.assertEquals(114.95, libreria.deudaDelClienteEnElMesYAño(mes, año, cliente), 0.1);
     }
 
+    @Test
     public void clienteCompra5LibrosYDosRevistaEnEsteMesYSeVerificaSeDebeCobrarle1850DelCorrienteMes() {
         Libreria libreria = new Libreria();
 
@@ -202,22 +204,28 @@ public class LibreriaTest {
         Libro libroDePrueba_2 = new Libro(325);
         Libro libroDePrueba_3 = new Libro(250);
         Libro libroDePrueba_4 = new Libro(150);
+
         ProductoSuscribible revistaDePrueba_1 = new Revista(100, 3);
         ProductoSuscribible revistaDePrueba_2 = new Revista(200, 3);
+
         LocalDate fechaDeCompra = LocalDate.of(2018, 6, 12);
 
-        cliente.comprarProducto(libroDePrueba_1, fechaDeCompra);
-        cliente.comprarProducto(libroDePrueba_2, fechaDeCompra);
-        cliente.comprarProducto(libroDePrueba_3, fechaDeCompra);
-        cliente.comprarProducto(libroDePrueba_4, fechaDeCompra);
-        cliente.comprarProducto(revistaDePrueba_1, fechaDeCompra);
-        cliente.comprarProducto(revistaDePrueba_2, fechaDeCompra);
+        libreria.venderProducto(libroDePrueba_1, cliente, fechaDeCompra);
+        libreria.venderProducto(libroDePrueba_2, cliente, fechaDeCompra);
+        libreria.venderProducto(libroDePrueba_3, cliente, fechaDeCompra);
+        libreria.venderProducto(libroDePrueba_4, cliente, fechaDeCompra);
+        libreria.venderProducto(revistaDePrueba_1, cliente, fechaDeCompra);
+        libreria.venderProducto(revistaDePrueba_2, cliente, fechaDeCompra);
 
-        //double resumenDelMesDeJunio = libreria.deudaDelClienteAlMesYAñoDeLaFecha(fechaDeCompra);
+        int mes = fechaDeCompra.getMonthValue();
+        int año = fechaDeCompra.getYear();
 
-        //Assert.assertEquals(1850, resumenDelMesDeJunio, 0.01);
+        double resumenDelMesDeJunio = libreria.deudaDelClienteEnElMesYAño(mes, año, cliente);
+
+        Assert.assertEquals(1622.5, resumenDelMesDeJunio, 0.01);
     }
 
+    @Test
     public void clienteCompra2LibrosYDosArticulosDeLibreriaEnEsteMesYSeVerificaElPendienteDelCorrienteMes() {
         Libreria libreria = new Libreria();
 
@@ -229,13 +237,38 @@ public class LibreriaTest {
         Producto articulo_2 = new ArticuloDeLibreria(200);
         LocalDate fechaDeCompra = LocalDate.of(2018, 6, 1);
 
-        cliente.comprarProducto(libroDePrueba_1, fechaDeCompra);
-        cliente.comprarProducto(libroDePrueba_2, fechaDeCompra);
-        cliente.comprarProducto(articulo_1, fechaDeCompra);
-        cliente.comprarProducto(articulo_2, fechaDeCompra);
+        libreria.venderProducto(libroDePrueba_1, cliente, fechaDeCompra);
+        libreria.venderProducto(libroDePrueba_2, cliente, fechaDeCompra);
+        libreria.venderProducto(articulo_1, cliente, fechaDeCompra);
+        libreria.venderProducto(articulo_2, cliente, fechaDeCompra);
 
-        //double resumenDelMesDeJunio = libreria.deudaDelClienteAlMesYAñoDeLaFecha(fechaDeCompra);
+        int mes = fechaDeCompra.getMonthValue();
+        int año = fechaDeCompra.getYear();
 
-        //Assert.assertEquals(913, resumenDelMesDeJunio, 0.01);
+        double resumenDelMesDeJunio = libreria.deudaDelClienteEnElMesYAño(mes, año, cliente);
+
+        Assert.assertEquals(867.34, resumenDelMesDeJunio, 0.01);
+    }
+
+    public void clienteCompraUnProductoDistintoDurante5mesesYSeObtieneLaDeudaAnual() {
+        Libreria libreria = new Libreria();
+
+        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
+
+        Libro libroDePrueba_1 = new Libro(225);
+        Libro libroDePrueba_2 = new Libro(325);
+        Producto articulo_1 = new ArticuloDeLibreria(100);
+        Producto articulo_2 = new ArticuloDeLibreria(200);
+
+        libreria.venderProducto(libroDePrueba_1, cliente, LocalDate.of(2018, 1, 1));
+        libreria.venderProducto(libroDePrueba_2, cliente, LocalDate.of(2018, 2, 1));
+        libreria.venderProducto(articulo_1, cliente, LocalDate.of(2018, 3, 1));
+        libreria.venderProducto(articulo_2, cliente, LocalDate.of(2018, 4, 1));
+
+        int año = 2018;
+
+        double resumenDelMesDeJunio = libreria.deudaDelClienteEnElAño(cliente, año);
+
+        Assert.assertEquals(867.34, resumenDelMesDeJunio, 0.01);
     }
 }

@@ -26,7 +26,7 @@ public class Libreria {
         int mes = fechaActual.getMonthValue();
         int año = fechaActual.getYear();
 
-        return cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(mes, año);
+        return this.deudaDelClienteEnElMesYAño(mes, año, cliente);
     }
 
     public double deudaDelClienteEnElAño(Cliente cliente, int año) {

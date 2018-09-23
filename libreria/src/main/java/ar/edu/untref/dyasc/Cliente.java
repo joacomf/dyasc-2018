@@ -135,15 +135,6 @@ public class Cliente {
         listadoDeProductos.add(producto);
     }
 
-    public double obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(int mes, int año) {
-        List<Producto> listadoDeProductosDelMes = this.obtenerListadoDeProductosEnElMesYAñoDeLaFecha(mes, año);
-        double resumenDelMes = listadoDeProductosDelMes.stream()
-                                                       .mapToDouble(Producto::obtenerPrecio)
-                                                       .sum();
-
-        return resumenDelMes;
-    }
-
     public Integer getDni() {
         return dni;
     }
