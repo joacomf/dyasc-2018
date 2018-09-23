@@ -11,8 +11,16 @@ public class Libreria {
     public void agregarCliente(Cliente cliente) {
     }
 
+    public void venderProducto(Producto producto, Cliente cliente, LocalDate fecha) {
+        cliente.comprarProducto(producto, fecha);
+    }
+
     public double cuantoDebeElClienteEsteMes(Cliente cliente) {
         return cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(LocalDate.now());
+    }
+
+    public double cuantoDebeElClienteEnElAño(Cliente cliente, int año) {
+        return cliente.obtenerResumenDeCuentaCorrienteDelAño(año);
     }
 
 }
