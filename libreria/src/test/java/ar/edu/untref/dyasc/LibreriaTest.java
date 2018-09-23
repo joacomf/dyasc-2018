@@ -47,7 +47,7 @@ public class LibreriaTest {
         Integer año = fechaDeCompra.getYear();
 
         libreria.venderProducto(productoDePrueba, cliente, fechaDeCompra);
-        double resumenDelMesDeJunio = libreria.cuantoDebeElClienteEnElMesYAño(mes, año, cliente);
+        double resumenDelMesDeJunio = libreria.deudaDelClienteEnElMesYAño(mes, año, cliente);
 
         Assert.assertEquals(47.69, resumenDelMesDeJunio, 0.01);
     }
@@ -95,7 +95,7 @@ public class LibreriaTest {
         libreria.venderProducto(libroDePrueba, cliente, fechaDeCompra);
         libreria.venderProducto(revistaDePrueba, cliente, fechaDeCompra);
 
-        double resumenDelMesDeJunio = libreria.cuantoDebeElClienteEnElMesYAño(mes, año, cliente);
+        double resumenDelMesDeJunio = libreria.deudaDelClienteEnElMesYAño(mes, año, cliente);
 
         Assert.assertEquals(196.69, resumenDelMesDeJunio, 0.01);
     }
@@ -132,7 +132,7 @@ public class LibreriaTest {
         libreria.venderProducto(domainDrivenDesign, cliente, LocalDate.of(2018, 2, 1));
         libreria.venderProducto(growingObjectOrientedSoftware, cliente, LocalDate.of(2018, 3, 1));
 
-        double deudaDelCliente = libreria.cuantoDebeElClienteEnElAño(cliente, 2018);
+        double deudaDelCliente = libreria.deudaDelClienteEnElAño(cliente, 2018);
 
         Assert.assertEquals(2576.0, deudaDelCliente, 0.1);
     }
@@ -166,13 +166,13 @@ public class LibreriaTest {
         ProductoSuscribible revista = new Revista(100.0, 8);
 
         libreria.venderProducto(libro, cliente);
-        libreria.venderSuscripcionAProducto(revista, cliente);
+        libreria.venderProducto(revista, cliente);
 
         LocalDate fecha = LocalDate.now();
         int mes = fecha.getMonthValue();
         int año = fecha.getYear();
 
-        double deudaDelCliente = libreria.cuantoDebeElClienteEnElMesYAño(mes, año, cliente);
+        double deudaDelCliente = libreria.deudaDelClienteEnElMesYAño(mes, año, cliente);
 
         Assert.assertEquals(830.0, deudaDelCliente, 0.1);
     }

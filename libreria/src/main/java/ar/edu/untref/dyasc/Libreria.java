@@ -9,12 +9,12 @@ public class Libreria {
         cliente.comprarProducto(articulo, LocalDate.now());
     }
 
-    public void venderSuscripcionAProducto(ProductoSuscribible articulo, Cliente cliente) {
-        cliente.comprarProducto(articulo, LocalDate.now());
-    }
-
     public void venderProducto(Producto producto, Cliente cliente, LocalDate fecha) {
         cliente.comprarProducto(producto, fecha);
+    }
+
+    public void venderProducto(ProductoSuscribible articulo, Cliente cliente) {
+        cliente.comprarProducto(articulo, LocalDate.now());
     }
 
     public void venderProducto(ProductoSuscribible producto, Cliente cliente, LocalDate fecha) {
@@ -29,11 +29,11 @@ public class Libreria {
         return cliente.obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(mes, año);
     }
 
-    public double cuantoDebeElClienteEnElAño(Cliente cliente, int año) {
+    public double deudaDelClienteEnElAño(Cliente cliente, int año) {
         return cliente.obtenerResumenDeCuentaCorrienteDelAño(año);
     }
 
-    public double cuantoDebeElClienteEnElMesYAño(int mes, int año, Cliente cliente) {
+    public double deudaDelClienteEnElMesYAño(int mes, int año, Cliente cliente) {
         List<Producto> listadoProductos = cliente.obtenerListadoDeProductosEnElMesYAñoDeLaFecha(mes, año);
         List<ProductoSuscribible> listadoDeSuscripciones = cliente.obtenerListadoDeSuscripcionesEnElMesYAñoDeLaFecha(mes, año);
 
