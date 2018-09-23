@@ -9,7 +9,8 @@ public class Libreria {
         cliente.comprarProducto(articulo, LocalDate.now());
     }
 
-    public void agregarCliente(Cliente cliente) {
+    public void venderSuscripcionAProducto(ProductoSuscribible articulo, Cliente cliente) {
+        cliente.comprarProducto(articulo, LocalDate.now());
     }
 
     public void venderProducto(Producto producto, Cliente cliente, LocalDate fecha) {
