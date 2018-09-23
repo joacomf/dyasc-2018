@@ -13,7 +13,7 @@ public class Cliente {
     private LocalDate fechaNacimiento;
     private String direccion;
     private Map<Integer, Map<Integer, List<Producto>>> mapaDeProductos;
-    private List<ProductoSuscribible> listadoDeSuscripciones;
+    private Map<Integer, Map<Integer, List<ProductoSuscribible>>> mapaDeSuscripciones;
 
     public Cliente(String nombre, String apellido, Integer dni, String direccion, LocalDate fechaNacimiento) {
         this.setNombre(nombre);
@@ -23,7 +23,7 @@ public class Cliente {
         this.setDireccion(direccion);
 
         this.mapaDeProductos = new HashMap<>();
-        this.listadoDeSuscripciones = new ArrayList<ProductoSuscribible>();
+        this.mapaDeSuscripciones = new HashMap<>();
     }
 
     public String obtenerNombre() {
@@ -62,17 +62,29 @@ public class Cliente {
         return new HashMap<Integer,  List<Producto>>();
     }
 
-    public List<ProductoSuscribible> obtenerListaDeSuscripciones() {
-        return this.listadoDeSuscripciones;
+    public Map<Integer, List<ProductoSuscribible>> obtenerListadoCompletoDeSuscripcionesAdquiridas() {
+        return new HashMap<Integer,  List<ProductoSuscribible>>();
     }
 
-    public List<Producto> obtenerListadoDeProductosEnElMesYAñoDeLaFecha(LocalDate fecha) {
-        Integer año = fecha.getYear();
-        Integer mes = fecha.getMonthValue();
+    public List<Producto> obtenerListadoDeProductosEnElMesYAñoDeLaFecha(int mes, int año) {
 
-        List<Producto> listadoDeProductos = null;
+        List<Producto> listadoDeProductos = new ArrayList<>();
 
         Map<Integer, List<Producto>> mapaDeMeses = this.mapaDeProductos.get(año);
+
+        if (mapaDeMeses != null) {
+            listadoDeProductos = mapaDeMeses.get(mes);
+        }
+
+        return listadoDeProductos;
+    }
+
+
+    public List<ProductoSuscribible> obtenerListadoDeSuscripcionesEnElMesYAñoDeLaFecha(int mes, int año) {
+
+        List<ProductoSuscribible> listadoDeProductos = new ArrayList<>();
+
+        Map<Integer, List<ProductoSuscribible>> mapaDeMeses = this.mapaDeSuscripciones.get(año);
 
         if (mapaDeMeses != null) {
             listadoDeProductos = mapaDeMeses.get(mes);
@@ -103,21 +115,28 @@ public class Cliente {
     }
 
     public void comprarProducto(ProductoSuscribible producto, LocalDate fecha) {
-        int cantidadDeEdicionesPorMes = producto.obtenerPeriodicidad();
+        Integer año = fecha.getYear();
 
-        for (int i = 0; i < cantidadDeEdicionesPorMes; i++) {
-            this.comprarProducto((Producto) producto, fecha);
+        Map<Integer, List<ProductoSuscribible>> listaDeMeses = this.mapaDeSuscripciones.get(año);
+
+        if (listaDeMeses == null) {
+            listaDeMeses = new HashMap<Integer, List<ProductoSuscribible>>();
+            mapaDeSuscripciones.put(año, listaDeMeses);
         }
 
-        this.agregarItemAListaDeSuscripcion(producto);
+        Integer mes = fecha.getMonthValue();
+        List<ProductoSuscribible> listadoDeProductos = listaDeMeses.get(mes);
+
+        if (listadoDeProductos == null) {
+            listadoDeProductos = new ArrayList<>();
+            listaDeMeses.put(mes, listadoDeProductos);
+        }
+
+        listadoDeProductos.add(producto);
     }
 
-    private void agregarItemAListaDeSuscripcion(ProductoSuscribible producto) {
-        this.listadoDeSuscripciones.add(producto);
-    }
-
-    public double obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(LocalDate fecha) {
-        List<Producto> listadoDeProductosDelMes = this.obtenerListadoDeProductosEnElMesYAñoDeLaFecha(fecha);
+    public double obtenerResumenDeCuentaCorrienteDelMesYAñoDeLaFecha(int mes, int año) {
+        List<Producto> listadoDeProductosDelMes = this.obtenerListadoDeProductosEnElMesYAñoDeLaFecha(mes, año);
         double resumenDelMes = listadoDeProductosDelMes.stream()
                                                        .mapToDouble(Producto::obtenerPrecio)
                                                        .sum();
