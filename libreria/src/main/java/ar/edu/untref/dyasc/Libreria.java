@@ -45,4 +45,7 @@ public class Libreria {
 
         return precioFinalDeProductos + precioFinalDeSuscripciones;
     }
+
+    public void agregarCliente(Cliente cliente) {
+    }
 }
