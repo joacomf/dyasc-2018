@@ -271,4 +271,21 @@ public class LibreriaTest {
 
         Assert.assertEquals(867.34, resumenDelMesDeJunio, 0.01);
     }
+
+    @Test
+    public void seVendeUnSuscripcionYSeVerificaElDescuentoDel20Porciento() {
+        Libreria libreria = new Libreria();
+
+        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
+
+        ProductoSuscribible articulo = new Revista(1000, 3);
+
+        libreria.venderProducto(articulo, cliente, LocalDate.of(2018, 3, 1));
+
+        int año = 2018;
+
+        double resumenDelMesDeJunio = libreria.deudaDelClienteEnElAño(cliente, año);
+
+        Assert.assertEquals(2400, resumenDelMesDeJunio, 0.01);
+    }
 }
