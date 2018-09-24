@@ -90,7 +90,6 @@ public class LibreriaTest {
         Integer mes = fechaDeCompra.getMonthValue();
         Integer año = fechaDeCompra.getYear();
 
-
         libreria.venderProducto(libroDePrueba, cliente, fechaDeCompra);
         libreria.venderProducto(revistaDePrueba, cliente, fechaDeCompra);
 
@@ -133,7 +132,7 @@ public class LibreriaTest {
 
         double deudaDelCliente = libreria.deudaDelClienteEnElAño(cliente, 2018);
 
-        Assert.assertEquals(2576.0, deudaDelCliente, 0.1);
+        Assert.assertEquals(2447.2, deudaDelCliente, 0.1);
     }
 
     @Test
@@ -250,6 +249,7 @@ public class LibreriaTest {
         Assert.assertEquals(867.34, resumenDelMesDeJunio, 0.01);
     }
 
+    @Test
     public void clienteCompraUnProductoDistintoDurante5mesesYSeObtieneLaDeudaAnual() {
         Libreria libreria = new Libreria();
 

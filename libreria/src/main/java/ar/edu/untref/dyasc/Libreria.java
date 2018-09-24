@@ -30,14 +30,21 @@ public class Libreria {
     }
 
     public double deudaDelClienteEnElAño(Cliente cliente, int año) {
-        return cliente.obtenerResumenDeCuentaCorrienteDelAño(año);
+
+        double deudaAnualAcumulada = 0;
+
+        for (int mes = 1; mes <= 12; mes++) {
+            deudaAnualAcumulada += this.deudaDelClienteEnElMesYAño(mes, año, cliente);
+        }
+
+        return deudaAnualAcumulada;
     }
 
     public double deudaDelClienteEnElMesYAño(int mes, int año, Cliente cliente) {
         List<Producto> listadoProductos = cliente.obtenerListadoDeProductosEnElMesYAñoDeLaFecha(mes, año);
         List<ProductoSuscribible> listadoDeSuscripciones = cliente.obtenerListadoDeSuscripcionesEnElMesYAñoDeLaFecha(mes, año);
 
-        double sumatoriaDeProductos = listadoProductos.stream().mapToDouble(producto -> producto.obtenerPrecio()).sum();
+        double sumatoriaDeProductos = listadoProductos.stream().mapToDouble(Producto::obtenerPrecio).sum();
         double sumatoriaDeSuscripciones = listadoDeSuscripciones.stream().mapToDouble(producto -> producto.obtenerPrecio() * producto.obtenerPeriodicidad()).sum();
 
         double precioFinalDeProductos = sumatoriaDeProductos * 0.95;

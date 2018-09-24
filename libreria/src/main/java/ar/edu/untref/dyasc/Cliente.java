@@ -73,7 +73,7 @@ public class Cliente {
         Map<Integer, List<Producto>> mapaDeMeses = this.mapaDeProductos.get(año);
 
         if (mapaDeMeses != null) {
-            listadoDeProductos = mapaDeMeses.get(mes);
+            listadoDeProductos = mapaDeMeses.getOrDefault(mes, new ArrayList<>());
         }
 
         return listadoDeProductos;
@@ -87,7 +87,7 @@ public class Cliente {
         Map<Integer, List<ProductoSuscribible>> mapaDeMeses = this.mapaDeSuscripciones.get(año);
 
         if (mapaDeMeses != null) {
-            listadoDeProductos = mapaDeMeses.get(mes);
+            listadoDeProductos = mapaDeMeses.getOrDefault(mes, new ArrayList<>());
         }
 
         return listadoDeProductos;
@@ -104,12 +104,7 @@ public class Cliente {
         }
 
         Integer mes = fecha.getMonthValue();
-        List<Producto> listadoDeProductos = listaDeMeses.get(mes);
-
-        if (listadoDeProductos == null) {
-            listadoDeProductos = new ArrayList<>();
-            listaDeMeses.put(mes, listadoDeProductos);
-        }
+        List<Producto> listadoDeProductos = listaDeMeses.computeIfAbsent(mes, listado -> new ArrayList<>());
 
         listadoDeProductos.add(producto);
     }
@@ -125,35 +120,12 @@ public class Cliente {
         }
 
         Integer mes = fecha.getMonthValue();
-        List<ProductoSuscribible> listadoDeProductos = listaDeMeses.get(mes);
-
-        if (listadoDeProductos == null) {
-            listadoDeProductos = new ArrayList<>();
-            listaDeMeses.put(mes, listadoDeProductos);
-        }
+        List<ProductoSuscribible> listadoDeProductos = listaDeMeses.computeIfAbsent(mes, listado -> new ArrayList<>());
 
         listadoDeProductos.add(producto);
     }
 
-    public Integer getDni() {
-        return dni;
-    }
-
-    public void setDni(Integer dni) {
+    private void setDni(Integer dni) {
         this.dni = dni;
     }
-
-    public double obtenerResumenDeCuentaCorrienteDelAño(int año) {
-        Map<Integer, List<Producto>> mapaDeMeses = this.mapaDeProductos.get(año);
-        Set<Integer> listadoDeMeses = mapaDeMeses.keySet();
-
-        double sumatoria = 0;
-
-        for (int mes : listadoDeMeses) {
-            sumatoria += mapaDeMeses.get(mes).stream().mapToDouble(producto -> producto.obtenerPrecio()).sum();
-        }
-
-        return sumatoria;
-    }
-
 }
