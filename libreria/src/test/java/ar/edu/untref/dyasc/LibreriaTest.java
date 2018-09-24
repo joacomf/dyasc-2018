@@ -34,7 +34,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void clienteCompraLibroYSeObtieneElSaldoDeFinDeMes() {
+    public void seVendeLibroYSeObtieneElSaldoDeFinDeMes() {
         Libreria libreria = new Libreria();
 
         double precioDeVenta = 50.2;
@@ -53,7 +53,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void clienteCompraLibroYCuadernoYSeObtieneElSaldoDeFinDeMes() {
+    public void seVendeLibroLibroYCuadernoYSeObtieneElSaldoAdeudadoDeFinDeMes() {
         Libreria libreria = new Libreria();
 
         double precioDeVentaLibro = 30.2;
@@ -76,7 +76,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void clienteCompraLibroYUnaRevistaYSeVerificaQueTieneUnaSuscripcionEnEseMes() {
+    public void seVendeUnLibroYUnaRevistaAUnClienteYSeVerificaLaDeudaMensualDelLibroYLaRevistaConSuPeriodicidad() {
         Libreria libreria = new Libreria();
 
         double precioDeVentaLibro = 30.2;
@@ -194,7 +194,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void clienteCompra5LibrosYDosRevistaEnEsteMesYSeVerificaSeDebeCobrarle1850DelCorrienteMes() {
+    public void seVende5LibrosYDosRevistaEnEsteMesYSeVerificaSeDebeCobrarleConDescuentoDel5PorcientoDelCorrienteMes() {
         Libreria libreria = new Libreria();
 
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
@@ -225,7 +225,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void clienteCompra2LibrosYDosArticulosDeLibreriaEnEsteMesYSeVerificaElPendienteDelCorrienteMes() {
+    public void seVende2LibrosYDosArticulosDeLibreriaEnEsteMesYSeVerificaElPendienteDelCorrienteMes() {
         Libreria libreria = new Libreria();
 
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
@@ -250,7 +250,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void clienteCompraUnProductoDistintoDurante5mesesYSeObtieneLaDeudaAnual() {
+    public void seVendeUnProductoDistintoDurante5mesesYSeVerificaLaDeudaAnual() {
         Libreria libreria = new Libreria();
 
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
