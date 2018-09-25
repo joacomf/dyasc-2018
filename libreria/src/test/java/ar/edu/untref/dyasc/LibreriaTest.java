@@ -385,12 +385,14 @@ public class LibreriaTest {
     @Test
     public void agregaTresClientesYVendeProductoASoloUnoYObtieneDeudaDelMesPorDNI() throws ClienteNoRegistradoException {
         int dniDelClienteLuis = 12548777;
+        int dniDelClienteCarlos = 15482222;
+        int dniDelClienteGerardo = 12348569;
 
         Libreria libreria = new Libreria();
 
         Cliente cliente_luis = new Cliente("Luis", "Diaz", dniDelClienteLuis, "Calle Falsa 123", LocalDate.of(1995, 9, 15));
-        Cliente cliente_carlos = new Cliente("Carlos", "Lopez", 15482222, "Calle Falsa 444", LocalDate.of(1955, 3, 15));
-        Cliente cliente_gerardo = new Cliente("Gerardo", "Diaz", 12348569, "Calle Lopez 123", LocalDate.of(1983, 9, 15));
+        Cliente cliente_carlos = new Cliente("Carlos", "Lopez", dniDelClienteCarlos, "Calle Falsa 444", LocalDate.of(1955, 3, 15));
+        Cliente cliente_gerardo = new Cliente("Gerardo", "Diaz", dniDelClienteGerardo, "Calle Lopez 123", LocalDate.of(1983, 9, 15));
 
         ProductoSuscribible revista = new Revista(200, 2);
 
@@ -398,7 +400,7 @@ public class LibreriaTest {
 
         libreria.venderProducto(revista, dniDelClienteLuis);
 
-        double resumenDelMesDeLuis = libreria.deudaDelClienteEsteMes(cliente_luis);
+        double resumenDelMesDeLuis = libreria.deudaDelClienteEsteMes(dniDelClienteLuis);
         double resumenDelMesDeCarlos = libreria.deudaDelClienteEsteMes(cliente_carlos);
         double resumenDelMesDeGerardo = libreria.deudaDelClienteEsteMes(cliente_gerardo);
 

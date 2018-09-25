@@ -83,4 +83,9 @@ public class Libreria {
         listadoDeClientes.put(cliente.getDni(), cliente);
     }
 
+    public double deudaDelClienteEsteMes(int dni) throws ClienteNoRegistradoException {
+        Cliente cliente = this.obtenerClientePorDNI(dni);
+
+        return this.deudaDelClienteEsteMes(cliente);
+    }
 }
