@@ -19,7 +19,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void laLibreriaTieneClienteAlCualSeVendeUnLibro() {
+    public void laLibreriaTieneClienteAlCualSeVendeUnLibroEnElDia() {
         Libreria libreria = new Libreria();
 
         Cliente cliente = new Cliente("Pepe", "Diaz", 1230495, null, null);
@@ -34,7 +34,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void seVendeLibroYSeObtieneElSaldoDeFinDeMes() {
+    public void seVendeLibroEnJunioDel2018YSeObtieneElSaldoDeFinDeMes() {
         Libreria libreria = new Libreria();
 
         double precioDeVenta = 50.2;
@@ -288,4 +288,24 @@ public class LibreriaTest {
 
         Assert.assertEquals(2400, resumenDelMesDeJunio, 0.01);
     }
+
+    @Test
+    public void seRegistraClienteYSeVendeUnLibroEnElDiaUnicamenteConDatoDeDNI() throws ClienteNoRegistradoException {
+        int dniDelCliente = 10235478;
+
+        Libreria libreria = new Libreria();
+
+        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, dniDelCliente, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
+
+        Producto libro = new Libro(200);
+
+        libreria.agregarCliente(cliente);
+
+        libreria.venderProducto(libro, dniDelCliente);
+
+        double resumenDelMesDeJunio = libreria.cuantoDebeElClienteEsteMes(cliente);
+
+        Assert.assertEquals(190, resumenDelMesDeJunio, 0.01);
+    }
+
 }

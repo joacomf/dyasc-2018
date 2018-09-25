@@ -128,4 +128,8 @@ public class Cliente {
     private void setDni(Integer dni) {
         this.dni = dni;
     }
+
+    public Integer getDni() {
+        return this.dni;
+    }
 }

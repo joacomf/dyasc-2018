@@ -1,9 +1,13 @@
 package ar.edu.untref.dyasc;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Libreria {
+
+    private Map<Integer, Cliente> listadoDeClientes = new HashMap<>();
 
     public void venderProducto(Producto articulo, Cliente cliente) {
         cliente.comprarProducto(articulo, LocalDate.now());
@@ -19,6 +23,16 @@ public class Libreria {
 
     public void venderProducto(ProductoSuscribible producto, Cliente cliente, LocalDate fecha) {
         cliente.comprarProducto(producto, fecha);
+    }
+
+    public void venderProducto(Producto libro, int dniDelCliente) throws ClienteNoRegistradoException {
+        Cliente cliente = listadoDeClientes.get(dniDelCliente);
+
+        if (cliente == null) {
+            throw new ClienteNoRegistradoException();
+        }
+
+        cliente.comprarProducto(libro, LocalDate.now());
     }
 
     public double cuantoDebeElClienteEsteMes(Cliente cliente) {
@@ -54,5 +68,8 @@ public class Libreria {
     }
 
     public void agregarCliente(Cliente cliente) {
+
+        listadoDeClientes.put(cliente.getDni(), cliente);
     }
+
 }
