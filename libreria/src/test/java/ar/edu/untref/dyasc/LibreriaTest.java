@@ -356,4 +356,30 @@ public class LibreriaTest {
 
         Assert.assertEquals(320, resumenDelMes, 0.01);
     }
+
+    @Test
+    public void agregaTresClientesYVendeProductoASoloUno() throws ClienteNoRegistradoException {
+        int dniDelClienteLuis = 12548777;
+
+        Libreria libreria = new Libreria();
+
+        Cliente cliente_luis = new Cliente("Luis", "Diaz", dniDelClienteLuis, "Calle Falsa 123", LocalDate.of(1995, 9, 15));
+        Cliente cliente_carlos = new Cliente("Carlos", "Lopez", 15482222, "Calle Falsa 444", LocalDate.of(1955, 3, 15));
+        Cliente cliente_gerardo = new Cliente("Gerardo", "Diaz", 12348569, "Calle Lopez 123", LocalDate.of(1983, 9, 15));
+
+        ProductoSuscribible revista = new Revista(200, 2);
+
+        libreria.agregarCliente(cliente_luis);
+
+        libreria.venderProducto(revista, dniDelClienteLuis);
+
+        double resumenDelMesDeLuis = libreria.cuantoDebeElClienteEsteMes(cliente_luis);
+        double resumenDelMesDeCarlos = libreria.cuantoDebeElClienteEsteMes(cliente_carlos);
+        double resumenDelMesDeGerardo = libreria.cuantoDebeElClienteEsteMes(cliente_gerardo);
+
+        Assert.assertEquals(320, resumenDelMesDeLuis, 0.01);
+        Assert.assertEquals(0, resumenDelMesDeCarlos, 0.01);
+        Assert.assertEquals(0, resumenDelMesDeGerardo, 0.01);
+    }
+    
 }
