@@ -46,7 +46,7 @@ public class Libreria {
         return cliente;
     }
 
-    public double cuantoDebeElClienteEsteMes(Cliente cliente) {
+    public double deudaDelClienteEsteMes(Cliente cliente) {
         LocalDate fechaActual = LocalDate.now();
         int mes = fechaActual.getMonthValue();
         int año = fechaActual.getYear();
