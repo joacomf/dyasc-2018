@@ -290,7 +290,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void seRegistraClienteYSeVendeUnLibroEnElDiaUnicamenteConDatoDeDNI() throws ClienteNoRegistradoException {
+    public void seRegistraClienteYSeVendeUnLibroEnElMomentoUnicamenteConDatoDeDNI() throws ClienteNoRegistradoException {
         int dniDelCliente = 10235478;
 
         Libreria libreria = new Libreria();
@@ -309,7 +309,7 @@ public class LibreriaTest {
     }
 
     @Test(expected = ClienteNoRegistradoException.class)
-    public void seVendePorDNIUnLibroAUnClienteInexistenteEnElLaLibreria() throws ClienteNoRegistradoException {
+    public void seVendePorDNIEnElMomentoUnLibroAUnClienteInexistenteEnElLaLibreria() throws ClienteNoRegistradoException {
         int dniDelCliente = 10235478;
 
         Libreria libreria = new Libreria();
@@ -317,5 +317,43 @@ public class LibreriaTest {
         Producto libro = new ArticuloDeLibreria(100);
 
         libreria.venderProducto(libro, dniDelCliente);
+    }
+
+    @Test
+    public void seVendeEnElMomentoSuscripcionAClientePorDNIRegistradoEnElListadoDeLaLibreria() throws ClienteNoRegistradoException {
+        int dniDelCliente = 12548777;
+
+        Libreria libreria = new Libreria();
+
+        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, dniDelCliente, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
+
+        ProductoSuscribible revista = new Revista(200, 2);
+
+        libreria.agregarCliente(cliente);
+
+        libreria.venderProducto(revista, dniDelCliente);
+
+        double resumenDelMes = libreria.cuantoDebeElClienteEsteMes(cliente);
+
+        Assert.assertEquals(320, resumenDelMes, 0.01);
+    }
+
+    @Test
+    public void seVendeSuscripcionAClientePorDNIRegistradoEnElListadoDeLaLibreria() throws ClienteNoRegistradoException {
+        int dniDelCliente = 12548777;
+
+        Libreria libreria = new Libreria();
+
+        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, dniDelCliente, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
+
+        ProductoSuscribible revista = new Revista(200, 2);
+
+        libreria.agregarCliente(cliente);
+
+        libreria.venderProducto(revista, dniDelCliente);
+
+        double resumenDelMes = libreria.cuantoDebeElClienteEsteMes(cliente);
+
+        Assert.assertEquals(320, resumenDelMes, 0.01);
     }
 }

@@ -26,13 +26,24 @@ public class Libreria {
     }
 
     public void venderProducto(Producto libro, int dniDelCliente) throws ClienteNoRegistradoException {
+        Cliente cliente = obtenerClientePorDNI(dniDelCliente);
+
+        cliente.comprarProducto(libro, LocalDate.now());
+    }
+
+    public void venderProducto(ProductoSuscribible libro, int dniDelCliente) throws ClienteNoRegistradoException {
+        Cliente cliente = obtenerClientePorDNI(dniDelCliente);
+
+        cliente.comprarProducto(libro, LocalDate.now());
+    }
+
+    private Cliente obtenerClientePorDNI(int dniDelCliente) throws ClienteNoRegistradoException {
         Cliente cliente = listadoDeClientes.get(dniDelCliente);
 
         if (cliente == null) {
             throw new ClienteNoRegistradoException();
         }
-
-        cliente.comprarProducto(libro, LocalDate.now());
+        return cliente;
     }
 
     public double cuantoDebeElClienteEsteMes(Cliente cliente) {
