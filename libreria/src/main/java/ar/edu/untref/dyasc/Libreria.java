@@ -31,10 +31,22 @@ public class Libreria {
         cliente.comprarProducto(libro, LocalDate.now());
     }
 
-    public void venderProducto(ProductoSuscribible libro, int dniDelCliente) throws ClienteNoRegistradoException {
-        Cliente cliente = obtenerClientePorDNI(dniDelCliente);
+    public void venderProducto(ProductoSuscribible producto, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
+        Cliente cliente = obtenerClientePorDNI(dni);
+
+        cliente.comprarProducto(producto, fecha);
+    }
+
+    public void venderProducto(ProductoSuscribible libro, int dni) throws ClienteNoRegistradoException {
+        Cliente cliente = obtenerClientePorDNI(dni);
 
         cliente.comprarProducto(libro, LocalDate.now());
+    }
+
+    public void venderProducto(Producto producto, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
+        Cliente cliente = obtenerClientePorDNI(dni);
+
+        cliente.comprarProducto(producto, fecha);
     }
 
     private Cliente obtenerClientePorDNI(int dniDelCliente) throws ClienteNoRegistradoException {
@@ -63,6 +75,18 @@ public class Libreria {
         }
 
         return deudaAnualAcumulada;
+    }
+
+    public double deudaDelClienteEnElAño(int dni, int año) throws ClienteNoRegistradoException {
+        Cliente cliente = this.obtenerClientePorDNI(dni);
+
+        return this.deudaDelClienteEnElAño(cliente, año);
+    }
+
+    public double deudaDelClienteEnElMesYAño(int mes, int año, int dni) throws ClienteNoRegistradoException {
+        Cliente cliente = this.obtenerClientePorDNI(dni);
+
+        return this.deudaDelClienteEnElMesYAño(mes, año, cliente);
     }
 
     public double deudaDelClienteEnElMesYAño(int mes, int año, Cliente cliente) {
