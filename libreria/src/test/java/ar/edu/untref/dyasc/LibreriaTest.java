@@ -308,4 +308,14 @@ public class LibreriaTest {
         Assert.assertEquals(190, resumenDelMesDeJunio, 0.01);
     }
 
+    @Test(expected = ClienteNoRegistradoException.class)
+    public void seVendePorDNIUnLibroAUnClienteInexistenteEnElLaLibreria() throws ClienteNoRegistradoException {
+        int dniDelCliente = 10235478;
+
+        Libreria libreria = new Libreria();
+
+        Producto libro = new ArticuloDeLibreria(100);
+
+        libreria.venderProducto(libro, dniDelCliente);
+    }
 }
