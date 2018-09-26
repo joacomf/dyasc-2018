@@ -1,7 +1,7 @@
 package ar.edu.untref.dyasc;
 
 import ar.edu.untref.dyasc.productos.Producto;
-import ar.edu.untref.dyasc.productos.ProductoSuscribible;
+import ar.edu.untref.dyasc.productos.Suscripcion;
 
 import java.time.LocalDate;
 import java.util.HashMap;
@@ -20,11 +20,11 @@ public class Libreria {
         cliente.comprarProducto(producto, fecha);
     }
 
-    public void venderProducto(ProductoSuscribible articulo, Cliente cliente) {
+    public void venderProducto(Suscripcion articulo, Cliente cliente) {
         cliente.comprarProducto(articulo, LocalDate.now());
     }
 
-    public void venderProducto(ProductoSuscribible producto, Cliente cliente, LocalDate fecha) {
+    public void venderProducto(Suscripcion producto, Cliente cliente, LocalDate fecha) {
         cliente.comprarProducto(producto, fecha);
     }
 
@@ -34,13 +34,13 @@ public class Libreria {
         cliente.comprarProducto(libro, LocalDate.now());
     }
 
-    public void venderProducto(ProductoSuscribible producto, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
+    public void venderProducto(Suscripcion producto, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
         Cliente cliente = obtenerClientePorDNI(dni);
 
         cliente.comprarProducto(producto, fecha);
     }
 
-    public void venderProducto(ProductoSuscribible libro, int dni) throws ClienteNoRegistradoException {
+    public void venderProducto(Suscripcion libro, int dni) throws ClienteNoRegistradoException {
         Cliente cliente = obtenerClientePorDNI(dni);
 
         cliente.comprarProducto(libro, LocalDate.now());
@@ -94,7 +94,7 @@ public class Libreria {
 
     public double deudaDelClienteEnElMesYAño(int mes, int año, Cliente cliente) {
         List<Producto> listadoProductos = cliente.obtenerListadoDeProductosEnElMesYAñoDeLaFecha(mes, año);
-        List<ProductoSuscribible> listadoDeSuscripciones = cliente.obtenerListadoDeSuscripcionesEnElMesYAñoDeLaFecha(mes, año);
+        List<Suscripcion> listadoDeSuscripciones = cliente.obtenerListadoDeSuscripcionesEnElMesYAñoDeLaFecha(mes, año);
 
         double sumatoriaDeProductos = listadoProductos.stream().mapToDouble(Producto::obtenerPrecio).sum();
         double sumatoriaDeSuscripciones = listadoDeSuscripciones.stream().mapToDouble(producto -> producto.obtenerPrecio() * producto.obtenerPeriodicidad()).sum();

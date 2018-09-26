@@ -1,14 +1,10 @@
 package ar.edu.untref.dyasc.productos;
 
-public class ProductoSuscribible extends Producto{
+public class Suscripcion extends Producto{
 
     private int periodicidad = 0;
 
-    public ProductoSuscribible(double precio) {
-        this(precio, 1);
-    }
-
-    public ProductoSuscribible(double precio, int periodicidad) {
+    public Suscripcion(double precio, int periodicidad) {
         super(precio);
         this.setPeriodicidad(periodicidad);
     }

@@ -85,7 +85,7 @@ public class LibreriaTest {
 
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
         Producto libroDePrueba = new Libro(precioDeVentaLibro);
-        ProductoSuscribible revistaDePrueba = new Revista(precioDeRevista, 3);
+        Suscripcion revistaDePrueba = new Revista(precioDeRevista, 3);
 
         LocalDate fechaDeCompra = LocalDate.of(2018, 5, 12);
         Integer mes = fechaDeCompra.getMonthValue();
@@ -164,7 +164,7 @@ public class LibreriaTest {
 
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
         Producto libro = new Libro(200.0);
-        ProductoSuscribible revista = new Revista(100.0, 8);
+        Suscripcion revista = new Revista(100.0, 8);
 
         libreria.venderProducto(libro, cliente);
         libreria.venderProducto(revista, cliente);
@@ -205,8 +205,8 @@ public class LibreriaTest {
         Libro libroDePrueba_3 = new Libro(250);
         Libro libroDePrueba_4 = new Libro(150);
 
-        ProductoSuscribible revistaDePrueba_1 = new Revista(100, 3);
-        ProductoSuscribible revistaDePrueba_2 = new Revista(200, 3);
+        Suscripcion revistaDePrueba_1 = new Revista(100, 3);
+        Suscripcion revistaDePrueba_2 = new Revista(200, 3);
 
         LocalDate fechaDeCompra = LocalDate.of(2018, 6, 12);
 
@@ -279,7 +279,7 @@ public class LibreriaTest {
 
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
 
-        ProductoSuscribible articulo = new Revista(1000, 3);
+        Suscripcion articulo = new Revista(1000, 3);
 
         libreria.venderProducto(articulo, cliente, LocalDate.of(2018, 3, 1));
 
@@ -328,7 +328,7 @@ public class LibreriaTest {
 
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, dniDelCliente, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
 
-        ProductoSuscribible revista = new Revista(200, 2);
+        Suscripcion revista = new Revista(200, 2);
 
         libreria.agregarCliente(cliente);
 
@@ -347,7 +347,7 @@ public class LibreriaTest {
 
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, dniDelCliente, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
 
-        ProductoSuscribible revista = new Revista(200, 2);
+        Suscripcion revista = new Revista(200, 2);
 
         libreria.agregarCliente(cliente);
 
@@ -368,7 +368,7 @@ public class LibreriaTest {
         Cliente cliente_carlos = new Cliente("Carlos", "Lopez", 15482222, "Calle Falsa 444", LocalDate.of(1955, 3, 15));
         Cliente cliente_gerardo = new Cliente("Gerardo", "Diaz", 12348569, "Calle Lopez 123", LocalDate.of(1983, 9, 15));
 
-        ProductoSuscribible revista = new Revista(200, 2);
+        Suscripcion revista = new Revista(200, 2);
 
         libreria.agregarCliente(cliente_luis);
 
@@ -395,7 +395,7 @@ public class LibreriaTest {
         Cliente cliente_carlos = new Cliente("Carlos", "Lopez", dniDelClienteCarlos, "Calle Falsa 444", LocalDate.of(1955, 3, 15));
         Cliente cliente_gerardo = new Cliente("Gerardo", "Diaz", dniDelClienteGerardo, "Calle Lopez 123", LocalDate.of(1983, 9, 15));
 
-        ProductoSuscribible revista = new Revista(200, 2);
+        Suscripcion revista = new Revista(200, 2);
 
         libreria.agregarCliente(cliente_luis);
 
@@ -418,7 +418,7 @@ public class LibreriaTest {
 
         Cliente cliente_luis = new Cliente("Luis", "Diaz", dniDelClienteLuis, "Calle Falsa 123", LocalDate.of(1995, 9, 15));
 
-        ProductoSuscribible revista = new Revista(200, 2);
+        Suscripcion revista = new Revista(200, 2);
 
         libreria.agregarCliente(cliente_luis);
 
@@ -437,7 +437,7 @@ public class LibreriaTest {
 
         Cliente cliente_luis = new Cliente("Luis", "Diaz", dniDelClienteLuis, "Calle Falsa 123", LocalDate.of(1995, 9, 15));
 
-        ProductoSuscribible revista = new Revista(200, 2);
+        Suscripcion revista = new Revista(200, 2);
         Producto libro = new Libro(200);
 
         libreria.agregarCliente(cliente_luis);

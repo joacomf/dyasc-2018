@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import ar.edu.untref.dyasc.productos.Producto;
-import ar.edu.untref.dyasc.productos.ProductoSuscribible;
+import ar.edu.untref.dyasc.productos.Suscripcion;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -60,9 +60,9 @@ public class ClienteTest {
     public void seCreaClienteConListaDeSuscripcionesVacia() {
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
 
-        Map<Integer, List<ProductoSuscribible>> listaDeSuscripciones = cliente.obtenerListadoCompletoDeSuscripcionesAdquiridas();
+        Map<Integer, List<Suscripcion>> listaDeSuscripciones = cliente.obtenerListadoCompletoDeSuscripcionesAdquiridas();
 
-        Assert.assertEquals(new HashMap<Integer, List<ProductoSuscribible>>(), listaDeSuscripciones);
+        Assert.assertEquals(new HashMap<Integer, List<Suscripcion>>(), listaDeSuscripciones);
     }
 
     @Test
