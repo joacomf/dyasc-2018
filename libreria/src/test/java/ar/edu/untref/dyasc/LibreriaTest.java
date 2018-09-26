@@ -347,7 +347,7 @@ public class LibreriaTest {
 
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, dniDelCliente, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
 
-        Suscripcion revista = new Revista(200, 2);
+        Suscripcion revista = new Periodico(200, 2);
 
         libreria.agregarCliente(cliente);
 
@@ -395,7 +395,7 @@ public class LibreriaTest {
         Cliente cliente_carlos = new Cliente("Carlos", "Lopez", dniDelClienteCarlos, "Calle Falsa 444", LocalDate.of(1955, 3, 15));
         Cliente cliente_gerardo = new Cliente("Gerardo", "Diaz", dniDelClienteGerardo, "Calle Lopez 123", LocalDate.of(1983, 9, 15));
 
-        Suscripcion revista = new Revista(200, 2);
+        Suscripcion revista = new Periodico(200, 2);
 
         libreria.agregarCliente(cliente_luis);
 
@@ -437,7 +437,7 @@ public class LibreriaTest {
 
         Cliente cliente_luis = new Cliente("Luis", "Diaz", dniDelClienteLuis, "Calle Falsa 123", LocalDate.of(1995, 9, 15));
 
-        Suscripcion revista = new Revista(200, 2);
+        Suscripcion revista = new Periodico(200, 2);
         Producto libro = new Libro(200);
 
         libreria.agregarCliente(cliente_luis);
