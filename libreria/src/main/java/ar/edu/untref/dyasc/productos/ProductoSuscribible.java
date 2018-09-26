@@ -1,4 +1,4 @@
-package ar.edu.untref.dyasc;
+package ar.edu.untref.dyasc.productos;
 
 public class ProductoSuscribible extends Producto{
 

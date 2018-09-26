@@ -1,5 +1,8 @@
 package ar.edu.untref.dyasc;
 
+import ar.edu.untref.dyasc.productos.Producto;
+import ar.edu.untref.dyasc.productos.ProductoSuscribible;
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;

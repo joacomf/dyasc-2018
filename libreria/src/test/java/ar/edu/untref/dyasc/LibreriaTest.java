@@ -1,5 +1,6 @@
 package ar.edu.untref.dyasc;
 
+import ar.edu.untref.dyasc.productos.*;
 import org.junit.Assert;
 import org.junit.Test;
 

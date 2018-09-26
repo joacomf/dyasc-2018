@@ -1,9 +1,10 @@
 package ar.edu.untref.dyasc;
 
+import ar.edu.untref.dyasc.productos.Producto;
+import ar.edu.untref.dyasc.productos.ProductoSuscribible;
+
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.function.Consumer;
 
 public class Cliente {
 

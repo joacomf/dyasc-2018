@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ar.edu.untref.dyasc.productos.Producto;
+import ar.edu.untref.dyasc.productos.ProductoSuscribible;
 import org.junit.Assert;
 import org.junit.Test;
 
