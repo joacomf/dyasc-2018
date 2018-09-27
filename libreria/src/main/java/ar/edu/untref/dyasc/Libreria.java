@@ -16,7 +16,19 @@ public class Libreria {
         cliente.comprarProducto(articulo, LocalDate.now());
     }
 
+    public void venderProducto(Producto libro, int dniDelCliente) throws ClienteNoRegistradoException {
+        Cliente cliente = obtenerClientePorDNI(dniDelCliente);
+
+        cliente.comprarProducto(libro, LocalDate.now());
+    }
+
     public void venderProducto(Producto producto, Cliente cliente, LocalDate fecha) {
+        cliente.comprarProducto(producto, fecha);
+    }
+
+    public void venderProducto(Producto producto, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
+        Cliente cliente = obtenerClientePorDNI(dni);
+
         cliente.comprarProducto(producto, fecha);
     }
 
@@ -26,12 +38,6 @@ public class Libreria {
 
     public void venderProducto(Suscripcion producto, Cliente cliente, LocalDate fecha) {
         cliente.comprarProducto(producto, fecha);
-    }
-
-    public void venderProducto(Producto libro, int dniDelCliente) throws ClienteNoRegistradoException {
-        Cliente cliente = obtenerClientePorDNI(dniDelCliente);
-
-        cliente.comprarProducto(libro, LocalDate.now());
     }
 
     public void venderProducto(Suscripcion producto, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
@@ -46,27 +52,18 @@ public class Libreria {
         cliente.comprarProducto(libro, LocalDate.now());
     }
 
-    public void venderProducto(Producto producto, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
-        Cliente cliente = obtenerClientePorDNI(dni);
-
-        cliente.comprarProducto(producto, fecha);
-    }
-
-    private Cliente obtenerClientePorDNI(int dniDelCliente) throws ClienteNoRegistradoException {
-        Cliente cliente = listadoDeClientes.get(dniDelCliente);
-
-        if (cliente == null) {
-            throw new ClienteNoRegistradoException();
-        }
-        return cliente;
-    }
-
     public double deudaDelClienteEsteMes(Cliente cliente) {
         LocalDate fechaActual = LocalDate.now();
         int mes = fechaActual.getMonthValue();
         int año = fechaActual.getYear();
 
         return this.deudaDelClienteEnElMesYAño(mes, año, cliente);
+    }
+
+    public double deudaDelClienteEsteMes(int dni) throws ClienteNoRegistradoException {
+        Cliente cliente = this.obtenerClientePorDNI(dni);
+
+        return this.deudaDelClienteEsteMes(cliente);
     }
 
     public double deudaDelClienteEnElAño(Cliente cliente, int año) {
@@ -110,9 +107,12 @@ public class Libreria {
         listadoDeClientes.put(cliente.getDni(), cliente);
     }
 
-    public double deudaDelClienteEsteMes(int dni) throws ClienteNoRegistradoException {
-        Cliente cliente = this.obtenerClientePorDNI(dni);
+    private Cliente obtenerClientePorDNI(int dniDelCliente) throws ClienteNoRegistradoException {
+        Cliente cliente = listadoDeClientes.get(dniDelCliente);
 
-        return this.deudaDelClienteEsteMes(cliente);
+        if (cliente == null) {
+            throw new ClienteNoRegistradoException();
+        }
+        return cliente;
     }
 }
