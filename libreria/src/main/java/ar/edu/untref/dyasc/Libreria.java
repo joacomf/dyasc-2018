@@ -12,14 +12,14 @@ public class Libreria {
 
     private Map<Integer, Cliente> listadoDeClientes = new HashMap<>();
 
-    public void venderProducto(Producto articulo, Cliente cliente) {
-        cliente.comprarProducto(articulo, LocalDate.now());
+    public void venderProducto(Producto producto, Cliente cliente) {
+        cliente.comprarProducto(producto, LocalDate.now());
     }
 
-    public void venderProducto(Producto libro, int dniDelCliente) throws ClienteNoRegistradoException {
-        Cliente cliente = obtenerClientePorDNI(dniDelCliente);
+    public void venderProducto(Producto producto, int dni) throws ClienteNoRegistradoException {
+        Cliente cliente = obtenerClientePorDNI(dni);
 
-        cliente.comprarProducto(libro, LocalDate.now());
+        cliente.comprarProducto(producto, LocalDate.now());
     }
 
     public void venderProducto(Producto producto, Cliente cliente, LocalDate fecha) {
@@ -32,24 +32,24 @@ public class Libreria {
         cliente.comprarProducto(producto, fecha);
     }
 
-    public void venderProducto(Suscripcion articulo, Cliente cliente) {
-        cliente.comprarProducto(articulo, LocalDate.now());
+    public void venderProducto(Suscripcion suscripcion, Cliente cliente) {
+        cliente.comprarProducto(suscripcion, LocalDate.now());
     }
 
-    public void venderProducto(Suscripcion producto, Cliente cliente, LocalDate fecha) {
-        cliente.comprarProducto(producto, fecha);
+    public void venderProducto(Suscripcion suscripcion, Cliente cliente, LocalDate fecha) {
+        cliente.comprarProducto(suscripcion, fecha);
     }
 
-    public void venderProducto(Suscripcion producto, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
+    public void venderProducto(Suscripcion suscripcion, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
         Cliente cliente = obtenerClientePorDNI(dni);
 
-        cliente.comprarProducto(producto, fecha);
+        cliente.comprarProducto(suscripcion, fecha);
     }
 
-    public void venderProducto(Suscripcion libro, int dni) throws ClienteNoRegistradoException {
+    public void venderProducto(Suscripcion suscripcion, int dni) throws ClienteNoRegistradoException {
         Cliente cliente = obtenerClientePorDNI(dni);
 
-        cliente.comprarProducto(libro, LocalDate.now());
+        cliente.comprarProducto(suscripcion, LocalDate.now());
     }
 
     public double deudaDelClienteEsteMes(Cliente cliente) {
