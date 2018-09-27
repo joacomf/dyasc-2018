@@ -8,51 +8,51 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Libreria {
+class Libreria {
 
     private Map<Integer, Cliente> listadoDeClientes = new HashMap<>();
 
-    public void venderProducto(Producto producto, Cliente cliente) {
+    void venderProducto(Producto producto, Cliente cliente) {
         cliente.comprarProducto(producto, LocalDate.now());
     }
 
-    public void venderProducto(Producto producto, int dni) throws ClienteNoRegistradoException {
+    void venderProducto(Producto producto, int dni) throws ClienteNoRegistradoException {
         Cliente cliente = obtenerClientePorDNI(dni);
 
         cliente.comprarProducto(producto, LocalDate.now());
     }
 
-    public void venderProducto(Producto producto, Cliente cliente, LocalDate fecha) {
+    void venderProducto(Producto producto, Cliente cliente, LocalDate fecha) {
         cliente.comprarProducto(producto, fecha);
     }
 
-    public void venderProducto(Producto producto, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
+    void venderProducto(Producto producto, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
         Cliente cliente = obtenerClientePorDNI(dni);
 
         cliente.comprarProducto(producto, fecha);
     }
 
-    public void venderProducto(Suscripcion suscripcion, Cliente cliente) {
+    void venderProducto(Suscripcion suscripcion, Cliente cliente) {
         cliente.comprarProducto(suscripcion, LocalDate.now());
     }
 
-    public void venderProducto(Suscripcion suscripcion, Cliente cliente, LocalDate fecha) {
+    void venderProducto(Suscripcion suscripcion, Cliente cliente, LocalDate fecha) {
         cliente.comprarProducto(suscripcion, fecha);
     }
 
-    public void venderProducto(Suscripcion suscripcion, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
+    void venderProducto(Suscripcion suscripcion, int dni, LocalDate fecha) throws ClienteNoRegistradoException {
         Cliente cliente = obtenerClientePorDNI(dni);
 
         cliente.comprarProducto(suscripcion, fecha);
     }
 
-    public void venderProducto(Suscripcion suscripcion, int dni) throws ClienteNoRegistradoException {
+    void venderProducto(Suscripcion suscripcion, int dni) throws ClienteNoRegistradoException {
         Cliente cliente = obtenerClientePorDNI(dni);
 
         cliente.comprarProducto(suscripcion, LocalDate.now());
     }
 
-    public double deudaDelClienteEsteMes(Cliente cliente) {
+    double deudaDelClienteEsteMes(Cliente cliente) {
         LocalDate fechaActual = LocalDate.now();
         int mes = fechaActual.getMonthValue();
         int año = fechaActual.getYear();
@@ -60,13 +60,13 @@ public class Libreria {
         return this.deudaDelClienteEnElMesYAño(mes, año, cliente);
     }
 
-    public double deudaDelClienteEsteMes(int dni) throws ClienteNoRegistradoException {
+    double deudaDelClienteEsteMes(int dni) throws ClienteNoRegistradoException {
         Cliente cliente = this.obtenerClientePorDNI(dni);
 
         return this.deudaDelClienteEsteMes(cliente);
     }
 
-    public double deudaDelClienteEnElAño(Cliente cliente, int año) {
+    double deudaDelClienteEnElAño(Cliente cliente, int año) {
 
         double deudaAnualAcumulada = 0;
 
@@ -77,19 +77,19 @@ public class Libreria {
         return deudaAnualAcumulada;
     }
 
-    public double deudaDelClienteEnElAño(int dni, int año) throws ClienteNoRegistradoException {
+    double deudaDelClienteEnElAño(int dni, int año) throws ClienteNoRegistradoException {
         Cliente cliente = this.obtenerClientePorDNI(dni);
 
         return this.deudaDelClienteEnElAño(cliente, año);
     }
 
-    public double deudaDelClienteEnElMesYAño(int mes, int año, int dni) throws ClienteNoRegistradoException {
+    double deudaDelClienteEnElMesYAño(int mes, int año, int dni) throws ClienteNoRegistradoException {
         Cliente cliente = this.obtenerClientePorDNI(dni);
 
         return this.deudaDelClienteEnElMesYAño(mes, año, cliente);
     }
 
-    public double deudaDelClienteEnElMesYAño(int mes, int año, Cliente cliente) {
+    double deudaDelClienteEnElMesYAño(int mes, int año, Cliente cliente) {
         List<Producto> listadoProductos = cliente.obtenerListadoDeProductosEnElMesYAñoDeLaFecha(mes, año);
         List<Suscripcion> listadoDeSuscripciones = cliente.obtenerListadoDeSuscripcionesEnElMesYAñoDeLaFecha(mes, año);
 
@@ -102,7 +102,7 @@ public class Libreria {
         return precioFinalDeProductos + precioFinalDeSuscripciones;
     }
 
-    public void agregarCliente(Cliente cliente) {
+    void agregarCliente(Cliente cliente) {
 
         listadoDeClientes.put(cliente.getDni(), cliente);
     }
