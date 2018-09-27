@@ -48,24 +48,6 @@ public class ClienteTest {
     }
 
     @Test
-    public void seCreaClienteConMapaDeProductosVacio() {
-        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
-
-        Map<Integer, List<Producto>> listaDeProductos = cliente.obtenerListadoCompletoDeProductosComprados();
-
-        Assert.assertEquals(new HashMap<Integer, List<Producto>>(), listaDeProductos);
-    }
-
-    @Test
-    public void seCreaClienteConListaDeSuscripcionesVacia() {
-        Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
-
-        Map<Integer, List<Suscripcion>> listaDeSuscripciones = cliente.obtenerListadoCompletoDeSuscripcionesAdquiridas();
-
-        Assert.assertEquals(new HashMap<Integer, List<Suscripcion>>(), listaDeSuscripciones);
-    }
-
-    @Test
     public void seObtieneListadoDeProductosVacioDelClienteEnElMes1YAño2018() {
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
 

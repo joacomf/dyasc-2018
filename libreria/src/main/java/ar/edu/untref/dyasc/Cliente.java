@@ -27,14 +27,6 @@ class Cliente {
         this.mapaDeSuscripciones = new HashMap<>();
     }
 
-    Map<Integer, List<Producto>> obtenerListadoCompletoDeProductosComprados() {
-        return new HashMap<Integer,  List<Producto>>();
-    }
-
-    Map<Integer, List<Suscripcion>> obtenerListadoCompletoDeSuscripcionesAdquiridas() {
-        return new HashMap<Integer,  List<Suscripcion>>();
-    }
-
     List<Producto> obtenerListadoDeProductosEnElMesYAñoDeLaFecha(int mes, int año) {
 
         List<Producto> listadoDeProductos = new ArrayList<>();
