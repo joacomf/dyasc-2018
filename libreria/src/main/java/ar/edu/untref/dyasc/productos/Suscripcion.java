@@ -1,6 +1,6 @@
 package ar.edu.untref.dyasc.productos;
 
-public class Suscripcion extends Producto{
+public abstract class Suscripcion extends Producto{
 
     private int periodicidad = 0;
 

@@ -1,6 +1,6 @@
 package ar.edu.untref.dyasc.productos;
 
-public class Producto {
+public abstract class Producto {
 
     private double precioDeVenta;
 

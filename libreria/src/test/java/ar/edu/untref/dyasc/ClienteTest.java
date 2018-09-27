@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ar.edu.untref.dyasc.productos.Libro;
 import ar.edu.untref.dyasc.productos.Producto;
 import ar.edu.untref.dyasc.productos.Suscripcion;
 import org.junit.Assert;
@@ -63,7 +64,7 @@ public class ClienteTest {
     @Test
     public void seObtieneListadoDeProductosDelClienteEnElMes5YAño2018() {
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
-        Producto productoDePrueba = new Producto(0);
+        Producto productoDePrueba = new Libro(25);
 
         LocalDate fechaDeCompra = LocalDate.of(2018, 5, 12);
         Integer mes = fechaDeCompra.getMonthValue();
