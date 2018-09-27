@@ -449,4 +449,29 @@ public class LibreriaTest {
 
         Assert.assertEquals(510, resumenDelAñoDeLuis, 0.01);
     }
+
+    @Test
+    public void vendeProductosEn4MesesDistintosEn2AñosDiferentesYObtieneLaDeudaDeUnAñoExcluyendoLosProductosDelOtroAño() throws ClienteNoRegistradoException {
+        int dniDelClienteLuis = 12548777;
+
+        Libreria libreria = new Libreria();
+
+        Cliente cliente_luis = new Cliente("Luis", "Diaz", dniDelClienteLuis, "Calle Falsa 123", LocalDate.of(1995, 9, 15));
+
+        Suscripcion revista = new Periodico(200, 2);
+        Producto libro = new Libro(100);
+        Producto lapices = new ArticuloDeLibreria(100);
+        Producto manual = new Libro(535);
+
+        libreria.agregarCliente(cliente_luis);
+
+        libreria.venderProducto(revista, dniDelClienteLuis, LocalDate.of(2018, 1, 5));
+        libreria.venderProducto(libro, dniDelClienteLuis, LocalDate.of(2018, 3, 15));
+        libreria.venderProducto(lapices, dniDelClienteLuis, LocalDate.of(2017, 3, 22));
+        libreria.venderProducto(manual, dniDelClienteLuis, LocalDate.of(2017, 11, 3));
+
+        double resumenDelAño2018DeLuis = libreria.deudaDelClienteEnElAño(dniDelClienteLuis, 2018);
+
+        Assert.assertEquals(415.0, resumenDelAño2018DeLuis, 0.01);
+    }
 }
