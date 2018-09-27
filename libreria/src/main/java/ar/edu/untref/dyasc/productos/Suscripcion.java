@@ -9,8 +9,16 @@ public abstract class Suscripcion extends Producto{
         this.setPeriodicidad(periodicidad);
     }
 
+    Suscripcion(double precio) {
+        this(precio, 1);
+    }
+
     public int obtenerPeriodicidad() {
         return periodicidad;
+    }
+
+    public double obtenerPrecioMensual() {
+        return this.obtenerPrecio() * this.obtenerPeriodicidad();
     }
 
     private void setPeriodicidad(int periodicidad) {

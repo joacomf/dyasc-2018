@@ -94,7 +94,7 @@ class Libreria {
         List<Suscripcion> listadoDeSuscripciones = cliente.obtenerListadoDeSuscripcionesEnElMesYAñoDeLaFecha(mes, año);
 
         double sumatoriaDeProductos = listadoProductos.stream().mapToDouble(Producto::obtenerPrecio).sum();
-        double sumatoriaDeSuscripciones = listadoDeSuscripciones.stream().mapToDouble(producto -> producto.obtenerPrecio() * producto.obtenerPeriodicidad()).sum();
+        double sumatoriaDeSuscripciones = listadoDeSuscripciones.stream().mapToDouble(Suscripcion::obtenerPrecioMensual).sum();
 
         double precioFinalDeProductos = sumatoriaDeProductos * 0.95;
         double precioFinalDeSuscripciones = sumatoriaDeSuscripciones * 0.80;
