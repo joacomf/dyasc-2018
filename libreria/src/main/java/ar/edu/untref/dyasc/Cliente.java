@@ -6,7 +6,7 @@ import ar.edu.untref.dyasc.productos.Suscripcion;
 import java.time.LocalDate;
 import java.util.*;
 
-public class Cliente {
+class Cliente {
 
     private String nombre;
     private String apellido;
@@ -16,7 +16,7 @@ public class Cliente {
     private Map<Integer, Map<Integer, List<Producto>>> mapaDeProductos;
     private Map<Integer, Map<Integer, List<Suscripcion>>> mapaDeSuscripciones;
 
-    public Cliente(String nombre, String apellido, Integer dni, String direccion, LocalDate fechaNacimiento) {
+    Cliente(String nombre, String apellido, Integer dni, String direccion, LocalDate fechaNacimiento) {
         this.setNombre(nombre);
         this.setApellido(apellido);
         this.setDni(dni);
@@ -27,7 +27,7 @@ public class Cliente {
         this.mapaDeSuscripciones = new HashMap<>();
     }
 
-    public String obtenerNombre() {
+    String obtenerNombre() {
         return this.nombre;
     }
 
@@ -35,7 +35,7 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String obtenerApellido() {
+    String obtenerApellido() {
         return this.apellido;
     }
 
@@ -43,31 +43,31 @@ public class Cliente {
         this.apellido = apellido;
     }
 
-    public LocalDate obtenerFechaNacimiento() {
+    LocalDate obtenerFechaNacimiento() {
         return this.fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    private void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String obtenerDireccion() {
+    String obtenerDireccion() {
         return this.direccion;
     }
 
-    public void setDireccion(String direccion) {
+    private void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
-    public Map<Integer, List<Producto>> obtenerListadoCompletoDeProductosComprados() {
+    Map<Integer, List<Producto>> obtenerListadoCompletoDeProductosComprados() {
         return new HashMap<Integer,  List<Producto>>();
     }
 
-    public Map<Integer, List<Suscripcion>> obtenerListadoCompletoDeSuscripcionesAdquiridas() {
+    Map<Integer, List<Suscripcion>> obtenerListadoCompletoDeSuscripcionesAdquiridas() {
         return new HashMap<Integer,  List<Suscripcion>>();
     }
 
-    public List<Producto> obtenerListadoDeProductosEnElMesYAñoDeLaFecha(int mes, int año) {
+    List<Producto> obtenerListadoDeProductosEnElMesYAñoDeLaFecha(int mes, int año) {
 
         List<Producto> listadoDeProductos = new ArrayList<>();
 
@@ -81,7 +81,7 @@ public class Cliente {
     }
 
 
-    public List<Suscripcion> obtenerListadoDeSuscripcionesEnElMesYAñoDeLaFecha(int mes, int año) {
+    List<Suscripcion> obtenerListadoDeSuscripcionesEnElMesYAñoDeLaFecha(int mes, int año) {
 
         List<Suscripcion> listadoDeProductos = new ArrayList<>();
 
@@ -94,7 +94,7 @@ public class Cliente {
         return listadoDeProductos;
     }
 
-    public void comprarProducto(Producto producto, LocalDate fecha) {
+    void comprarProducto(Producto producto, LocalDate fecha) {
         Integer año = fecha.getYear();
 
         Map<Integer, List<Producto>> listaDeMeses = this.mapaDeProductos.get(año);
@@ -110,7 +110,7 @@ public class Cliente {
         listadoDeProductos.add(producto);
     }
 
-    public void comprarProducto(Suscripcion producto, LocalDate fecha) {
+    void comprarProducto(Suscripcion producto, LocalDate fecha) {
         Integer año = fecha.getYear();
 
         Map<Integer, List<Suscripcion>> listaDeMeses = this.mapaDeSuscripciones.get(año);
@@ -130,7 +130,7 @@ public class Cliente {
         this.dni = dni;
     }
 
-    public Integer getDni() {
+    Integer getDni() {
         return this.dni;
     }
 }
