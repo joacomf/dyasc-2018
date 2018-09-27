@@ -27,38 +27,6 @@ class Cliente {
         this.mapaDeSuscripciones = new HashMap<>();
     }
 
-    String obtenerNombre() {
-        return this.nombre;
-    }
-
-    private void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    String obtenerApellido() {
-        return this.apellido;
-    }
-
-    private void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    LocalDate obtenerFechaNacimiento() {
-        return this.fechaNacimiento;
-    }
-
-    private void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    String obtenerDireccion() {
-        return this.direccion;
-    }
-
-    private void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
     Map<Integer, List<Producto>> obtenerListadoCompletoDeProductosComprados() {
         return new HashMap<Integer,  List<Producto>>();
     }
@@ -79,7 +47,6 @@ class Cliente {
 
         return listadoDeProductos;
     }
-
 
     List<Suscripcion> obtenerListadoDeSuscripcionesEnElMesYAñoDeLaFecha(int mes, int año) {
 
@@ -126,11 +93,43 @@ class Cliente {
         listadoDeProductos.add(producto);
     }
 
+    Integer getDni() {
+        return this.dni;
+    }
+
     private void setDni(Integer dni) {
         this.dni = dni;
     }
 
-    Integer getDni() {
-        return this.dni;
+    String obtenerNombre() {
+        return this.nombre;
+    }
+
+    private void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    String obtenerApellido() {
+        return this.apellido;
+    }
+
+    private void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    LocalDate obtenerFechaNacimiento() {
+        return this.fechaNacimiento;
+    }
+
+    private void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    String obtenerDireccion() {
+        return this.direccion;
+    }
+
+    private void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 }
