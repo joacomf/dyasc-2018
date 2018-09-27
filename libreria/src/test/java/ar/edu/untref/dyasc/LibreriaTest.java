@@ -43,7 +43,7 @@ public class LibreriaTest {
         Cliente cliente = new Cliente(NOMBRE_USUARIO_LUIS, APELLIDO_USUARIO_DIAZ, DNI_LUIZ_DIAZ, DIRECCION_DE_LUIS_DIAZ, FECHA_NACIMIENTO_LUIZ_DIAZ);
         Libro productoDePrueba = new Libro(precioDeVenta);
 
-        LocalDate fechaDeCompra = LocalDate.of(2018, 6, 12);
+        LocalDate fechaDeCompra = LocalDate.of(2017, 6, 12);
         Integer mes = fechaDeCompra.getMonthValue();
         Integer año = fechaDeCompra.getYear();
 
@@ -420,11 +420,14 @@ public class LibreriaTest {
 
         Suscripcion revista = new Revista(200, 2);
 
+        LocalDate fecha = LocalDate.of(2018, 1, 5);
+        Integer mes = fecha.getMonthValue();
+        Integer año = fecha.getYear();
+
         libreria.agregarCliente(cliente_luis);
+        libreria.venderProducto(revista, dniDelClienteLuis, fecha);
 
-        libreria.venderProducto(revista, dniDelClienteLuis, LocalDate.of(2018, 1, 5));
-
-        double resumenDelMesDeLuis = libreria.deudaDelClienteEnElMesYAño(1, 2018, dniDelClienteLuis);
+        double resumenDelMesDeLuis = libreria.deudaDelClienteEnElMesYAño(mes, año, dniDelClienteLuis);
 
         Assert.assertEquals(320, resumenDelMesDeLuis, 0.01);
     }
@@ -442,10 +445,10 @@ public class LibreriaTest {
 
         libreria.agregarCliente(cliente_luis);
 
-        libreria.venderProducto(revista, dniDelClienteLuis, LocalDate.of(2018, 1, 5));
-        libreria.venderProducto(libro, dniDelClienteLuis, LocalDate.of(2018, 3, 5));
+        libreria.venderProducto(revista, dniDelClienteLuis, LocalDate.of(2016, 1, 5));
+        libreria.venderProducto(libro, dniDelClienteLuis, LocalDate.of(2016, 3, 5));
 
-        double resumenDelAñoDeLuis = libreria.deudaDelClienteEnElAño(dniDelClienteLuis, 2018);
+        double resumenDelAñoDeLuis = libreria.deudaDelClienteEnElAño(dniDelClienteLuis, 2016);
 
         Assert.assertEquals(510, resumenDelAñoDeLuis, 0.01);
     }
