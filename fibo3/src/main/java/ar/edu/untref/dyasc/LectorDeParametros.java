@@ -25,21 +25,18 @@ class LectorDeParametros {
 
     private void evaluarOpciones(String opcion) throws OpcionesNoValidasException {
 
-        if (opcion.startsWith("-o=")) {
-            String[] opcionClaveValor = opcion.split("=");
-            String valorDeOpcion = opcionClaveValor[1];
+        if (opcion.startsWith("-") && opcion.contains("=")) {
 
-            this.evaluarOpcionDeImpresion(valorDeOpcion);
-        } else if (opcion.startsWith("-f=")) {
-            String[] opcionClaveValor = opcion.split("=");
-            String valorDeOpcion = opcionClaveValor[1];
+            String valorDeOpcion = opcion.split("=")[1];
+            char charOpcion = opcion.charAt(1);
 
-            this.evaluarSalidaEnArchivo(valorDeOpcion);
-        } else if (opcion.startsWith("-m=")) {
-            String[] opcionClaveValor = opcion.split("=");
-            String valorDeOpcion = opcionClaveValor[1];
-
-            this.evaluarSiEsSumatoria(valorDeOpcion);
+            if ( charOpcion == 'o') {
+                this.evaluarOpcionDeImpresion(valorDeOpcion);
+            } else if (charOpcion == 'f') {
+                this.evaluarSalidaEnArchivo(valorDeOpcion);
+            } else if (charOpcion == 'm') {
+                this.evaluarSiEsSumatoria(valorDeOpcion);
+            }
         } else {
             this.setIteraciones(Integer.valueOf(opcion));
         }
