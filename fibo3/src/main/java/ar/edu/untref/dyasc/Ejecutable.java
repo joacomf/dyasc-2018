@@ -23,9 +23,9 @@ public class Ejecutable {
             if (lector.debeGuardarEnArchivo()) {
                 AdministradorDeArchivos administrador = new AdministradorDeArchivos();
                 administrador.guardar(textoDeLaImpresion, lector.getNombreDeArchivo(), fibonacci.getDimension() );
+            } else {
+                System.out.println(textoDeLaImpresion);
             }
-
-            System.out.println(textoDeLaImpresion);
 
         } catch (OpcionesNoValidasException e) {
             System.out.println("Opciones no validas.");
