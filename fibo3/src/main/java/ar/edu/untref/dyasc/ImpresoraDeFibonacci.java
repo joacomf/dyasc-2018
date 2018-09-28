@@ -74,7 +74,7 @@ class ImpresoraDeFibonacci {
         this.listado = listado;
     }
 
-    void setDimension(int dimension) {
+    private void setDimension(int dimension) {
         this.dimension = dimension;
     }
 
