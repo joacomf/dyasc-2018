@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface FibonacciInterface {
 
-    public void generarSucesion(int n);
-    public List<Long> getSucesion();
+    void generarSucesion(int n);
+    List<Long> getSucesion();
 
-    public Long getSumatoria();
+    Long getSumatoria();
 
-    public int getN();
+    int getN();
 }
