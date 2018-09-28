@@ -58,9 +58,7 @@ class ImpresoraDeFibonacci {
         StringBuilder constructorDeString = new StringBuilder();
         constructorDeString.append(this.cabecera);
 
-        for (Iterator<Long> iterator = listado.iterator(); iterator.hasNext();) {
-            Long numeroEnLaSucesion = iterator.next();
-
+        for (Long numeroEnLaSucesion : listado) {
             constructorDeString.append(separador);
             constructorDeString.append(numeroEnLaSucesion);
         }
@@ -68,7 +66,7 @@ class ImpresoraDeFibonacci {
         return constructorDeString.toString();
     }
 
-    List<Long> getListado() {
+    private List<Long> getListado() {
         return listado;
     }
 
