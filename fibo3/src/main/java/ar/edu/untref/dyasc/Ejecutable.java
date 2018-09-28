@@ -13,7 +13,7 @@ public class Ejecutable {
         try {
             lector = new LectorDeParametros(args);
 
-            Fibonacci fibonacci = new Fibonacci();
+            FibonacciSucesion fibonacci = new FibonacciSucesion();
             fibonacci.generarSucesion(lector.getIteraciones());
 
             ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(fibonacci, lector.debeSerHorizontal(),

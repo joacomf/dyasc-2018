@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import mocks.FibonacciMock;
 
-public class ImpresoraDeFibonacciTest {
+public class ImpresoraDeFibonacciSucesionTest {
 
     private FibonacciMock fibonacci;
     private List<Long> listado;

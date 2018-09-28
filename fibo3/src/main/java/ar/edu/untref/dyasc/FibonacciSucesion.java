@@ -3,15 +3,15 @@ package ar.edu.untref.dyasc;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.untref.dyasc.interfaces.FibonacciInterface;
+import ar.edu.untref.dyasc.interfaces.Fibonacci;
 
-public class Fibonacci implements FibonacciInterface{
+public class FibonacciSucesion implements Fibonacci {
 
     List<Long> sucesion;
     private long sumatoria;
     private int N;
 
-    public Fibonacci() {
+    public FibonacciSucesion() {
         this.sucesion = new ArrayList<>();
     }
 

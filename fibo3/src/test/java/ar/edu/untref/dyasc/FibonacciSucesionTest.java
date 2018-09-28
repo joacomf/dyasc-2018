@@ -7,11 +7,11 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FibonacciTest {
+public class FibonacciSucesionTest {
 
     @Test
     public void creaSucesionDeFibonacciVacia() {
-        Fibonacci fibonacci = new Fibonacci();
+        FibonacciSucesion fibonacci = new FibonacciSucesion();
 
         List<Long> conjuntoVacio = new ArrayList<>();
 
@@ -24,7 +24,7 @@ public class FibonacciTest {
         Long[] sucesionEsperada = { 0L, 1L };
         List<Long> listaEsperada = Arrays.asList(sucesionEsperada);
 
-        Fibonacci fibonacci = new Fibonacci();
+        FibonacciSucesion fibonacci = new FibonacciSucesion();
 
         fibonacci.generarSucesion(2);
 
@@ -37,7 +37,7 @@ public class FibonacciTest {
         Long[] sucesionEsperada = { 0L, 1L, 1L, 2L, 3L };
         List<Long> listaEsperada = Arrays.asList(sucesionEsperada);
 
-        Fibonacci fibonacci = new Fibonacci();
+        FibonacciSucesion fibonacci = new FibonacciSucesion();
 
         fibonacci.generarSucesion(5);
 
@@ -52,7 +52,7 @@ public class FibonacciTest {
 
         List<Long> listaEsperada = Arrays.asList(sucesionEsperada);
 
-        Fibonacci fibonacci = new Fibonacci();
+        FibonacciSucesion fibonacci = new FibonacciSucesion();
 
         fibonacci.generarSucesion(5);
 

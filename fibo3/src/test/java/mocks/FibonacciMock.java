@@ -2,9 +2,9 @@ package mocks;
 
 import java.util.List;
 
-import ar.edu.untref.dyasc.interfaces.FibonacciInterface;
+import ar.edu.untref.dyasc.interfaces.Fibonacci;
 
-public class FibonacciMock implements FibonacciInterface{
+public class FibonacciMock implements Fibonacci {
     
     private List<Long> sucesion;
     private int dimension;
