@@ -44,7 +44,7 @@ public class ImpresoraDeFibonacci {
 
     private void inicializar(FibonacciInterface fibonacci) {
         this.setListado(fibonacci.getSucesion());
-        this.setDimension(fibonacci.getDimension());
+        this.setDimension(fibonacci.getN());
     }
 
     private void generarCabecera() {

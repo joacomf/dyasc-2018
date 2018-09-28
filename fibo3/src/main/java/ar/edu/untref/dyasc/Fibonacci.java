@@ -9,7 +9,7 @@ public class Fibonacci implements FibonacciInterface{
 
     List<Long> sucesion;
     private long sumatoria;
-    private int dimension;
+    private int N;
 
     public Fibonacci() {
         this.sucesion = new ArrayList<>();
@@ -18,7 +18,7 @@ public class Fibonacci implements FibonacciInterface{
     public void generarSucesion(int n) {
 
         this.setSumatoria(0);
-        this.setDimension(n);
+        this.setN(n);
 
         long anterior = 0;
         long actual = 1;
@@ -48,12 +48,12 @@ public class Fibonacci implements FibonacciInterface{
         this.sumatoria = sumatoria;
     }
 
-    public int getDimension() {
-        return dimension;
+    public int getN() {
+        return N;
     }
 
-    public void setDimension(int dimension) {
-        this.dimension = dimension;
+    public void setN(int n) {
+        this.N = n;
     }
 
 }

@@ -9,5 +9,5 @@ public interface FibonacciInterface {
 
     public Long getSumatoria();
 
-    public int getDimension();
+    public int getN();
 }

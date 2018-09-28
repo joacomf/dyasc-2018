@@ -37,7 +37,7 @@ public class FibonacciMock implements FibonacciInterface{
     }
 
     @Override
-    public int getDimension() {
+    public int getN() {
         return this.dimension;
     }
 

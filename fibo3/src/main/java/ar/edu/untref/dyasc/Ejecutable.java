@@ -22,7 +22,7 @@ public class Ejecutable {
 
             if (lector.debeGuardarEnArchivo()) {
                 AdministradorDeArchivos administrador = new AdministradorDeArchivos();
-                administrador.guardar(textoDeLaImpresion, lector.getNombreDeArchivo(), fibonacci.getDimension() );
+                administrador.guardar(textoDeLaImpresion, lector.getNombreDeArchivo(), fibonacci.getN() );
             } else {
                 System.out.println(textoDeLaImpresion);
             }
