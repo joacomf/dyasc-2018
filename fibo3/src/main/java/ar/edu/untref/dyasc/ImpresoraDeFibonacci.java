@@ -76,10 +76,6 @@ public class ImpresoraDeFibonacci {
         this.listado = listado;
     }
 
-    public int getDimension() {
-        return dimension;
-    }
-
     public void setDimension(int dimension) {
         this.dimension = dimension;
     }
