@@ -8,14 +8,15 @@ import java.util.List;
 
 class ImpresoraDeFibonacci {
 
+    private final Fibonacci fibonacci;
     private String separador = " ";
     private List<Long> listado;
     private String cabecera = "";
     private String caracterSecuencial = "";
-    private int dimension;
 
     ImpresoraDeFibonacci(Fibonacci fibonacci) {
-        inicializar(fibonacci);
+        this.fibonacci = fibonacci;
+        this.setListado(fibonacci.getSucesion());
     }
 
     ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho) {
@@ -41,13 +42,8 @@ class ImpresoraDeFibonacci {
         }
     }
 
-    private void inicializar(Fibonacci fibonacci) {
-        this.setListado(fibonacci.getSucesion());
-        this.setDimension(fibonacci.getN());
-    }
-
     private void generarCabecera() {
-        this.cabecera = "fibo<".concat(String.valueOf(this.dimension)).concat(">");
+        this.cabecera = "fibo<".concat(String.valueOf(this.fibonacci.getN())).concat(">");
         this.cabecera = this.cabecera.concat(this.caracterSecuencial );
         this.cabecera = this.cabecera.concat(":");
     }
@@ -71,10 +67,6 @@ class ImpresoraDeFibonacci {
 
     private void setListado(List<Long> listado) {
         this.listado = listado;
-    }
-
-    private void setDimension(int dimension) {
-        this.dimension = dimension;
     }
 
 }
