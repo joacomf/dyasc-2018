@@ -7,11 +7,11 @@ import ar.edu.untref.dyasc.interfaces.Fibonacci;
 
 public class FibonacciSucesion implements Fibonacci {
 
-    List<Long> sucesion;
+    private List<Long> sucesion;
     private long sumatoria;
     private int N;
 
-    public FibonacciSucesion() {
+    FibonacciSucesion() {
         this.sucesion = new ArrayList<>();
     }
 
@@ -44,7 +44,7 @@ public class FibonacciSucesion implements Fibonacci {
         return this.sumatoria;
     }
 
-    public void setSumatoria(long sumatoria) {
+    private void setSumatoria(long sumatoria) {
         this.sumatoria = sumatoria;
     }
 
@@ -52,7 +52,7 @@ public class FibonacciSucesion implements Fibonacci {
         return N;
     }
 
-    public void setN(int n) {
+    private void setN(int n) {
         this.N = n;
     }
 
