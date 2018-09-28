@@ -7,7 +7,7 @@ import java.util.List;
 
 import ar.edu.untref.dyasc.interfaces.Fibonacci;
 
-public class ImpresoraDeFibonacci {
+class ImpresoraDeFibonacci {
 
     private String separador = " ";
     private List<Long> listado;
@@ -15,11 +15,11 @@ public class ImpresoraDeFibonacci {
     private String caracterSecuencial = "";
     private int dimension;
 
-    public ImpresoraDeFibonacci(Fibonacci fibonacci) {
+    ImpresoraDeFibonacci(Fibonacci fibonacci) {
         inicializar(fibonacci);
     }
 
-    public ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho) {
+    ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho) {
         this(fibonacci);
 
         if (!esHorizontal) {
@@ -31,7 +31,7 @@ public class ImpresoraDeFibonacci {
         }
     }
 
-    public ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho, boolean esSumatoria) {
+    ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho, boolean esSumatoria) {
         this(fibonacci, esHorizontal, estaAlDerecho);
 
         if(esSumatoria) {
@@ -53,7 +53,7 @@ public class ImpresoraDeFibonacci {
         this.cabecera = this.cabecera.concat(":");
     }
 
-    public String imprimir() {
+    String imprimir() {
         this.generarCabecera();
         StringBuilder constructorDeString = new StringBuilder();
         constructorDeString.append(this.cabecera);
@@ -68,7 +68,7 @@ public class ImpresoraDeFibonacci {
         return constructorDeString.toString();
     }
 
-    public List<Long> getListado() {
+    List<Long> getListado() {
         return listado;
     }
 
@@ -76,7 +76,7 @@ public class ImpresoraDeFibonacci {
         this.listado = listado;
     }
 
-    public void setDimension(int dimension) {
+    void setDimension(int dimension) {
         this.dimension = dimension;
     }
 
