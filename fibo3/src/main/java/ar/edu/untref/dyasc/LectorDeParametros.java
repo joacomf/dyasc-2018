@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import ar.edu.untref.dyasc.excepciones.OpcionesNoValidasException;
 
-public class LectorDeParametros {
+class LectorDeParametros {
 
     private int iteraciones;
     private boolean debeIrAlDerecho = true;
@@ -13,7 +13,7 @@ public class LectorDeParametros {
     private boolean debeGuardarEnArchivo = false;
     private String nombreDeArchivo = "";
 
-    public LectorDeParametros(String[] parametros) throws OpcionesNoValidasException {
+    LectorDeParametros(String[] parametros) throws OpcionesNoValidasException {
         analizar(parametros);
     }
 
@@ -65,43 +65,43 @@ public class LectorDeParametros {
         this.debeSerHorizontal = valorDeLaOpcion.contains("h");
     }
 
-    public boolean debeIrAlDerecho() {
+    boolean debeIrAlDerecho() {
         return debeIrAlDerecho;
     }
 
-    public boolean debeSerHorizontal() {
+    boolean debeSerHorizontal() {
         return debeSerHorizontal;
     }
 
-    public int getIteraciones() {
+    int getIteraciones() {
         return iteraciones;
     }
 
-    public void setIteraciones(int iteraciones) {
+    private void setIteraciones(int iteraciones) {
         this.iteraciones = iteraciones;
     }
 
-    public boolean debeGuardarEnArchivo() {
+    boolean debeGuardarEnArchivo() {
         return debeGuardarEnArchivo;
     }
 
-    public void setDebeGuardarEnArchivo(boolean debeGuardarEnArchivo) {
+    private void setDebeGuardarEnArchivo(boolean debeGuardarEnArchivo) {
         this.debeGuardarEnArchivo = debeGuardarEnArchivo;
     }
 
-    public String getNombreDeArchivo() {
+    String getNombreDeArchivo() {
         return nombreDeArchivo;
     }
 
-    public void setNombreDeArchivo(String nombreDeArchivo) {
+    private void setNombreDeArchivo(String nombreDeArchivo) {
         this.nombreDeArchivo = nombreDeArchivo;
     }
 
-    public boolean debeSerSumatoria() {
+    boolean debeSerSumatoria() {
         return this.debeSerSumatoria;
     }
 
-    public void setDebeSerSumatoria(boolean debeSerSumatoria) {
+    private void setDebeSerSumatoria(boolean debeSerSumatoria) {
         this.debeSerSumatoria = debeSerSumatoria;
     }
 
