@@ -1,11 +1,10 @@
 package ar.edu.untref.dyasc;
 
+import ar.edu.untref.dyasc.interfaces.Fibonacci;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-
-import ar.edu.untref.dyasc.interfaces.Fibonacci;
 
 class ImpresoraDeFibonacci {
 
