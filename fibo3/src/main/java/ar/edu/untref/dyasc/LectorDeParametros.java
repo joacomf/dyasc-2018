@@ -18,8 +18,8 @@ public class LectorDeParametros {
     }
 
     private void analizar(String[] parametros) throws OpcionesNoValidasException {
-        for (int i = 0; i < parametros.length; i++) {
-            this.evaluarOpciones(parametros[i]);
+        for (String parametro : parametros) {
+            this.evaluarOpciones(parametro);
         }
     }
 
