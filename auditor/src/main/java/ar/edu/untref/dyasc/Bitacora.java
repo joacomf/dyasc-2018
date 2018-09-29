@@ -8,12 +8,12 @@ import java.io.Writer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Bitacora {
+class Bitacora {
 
     private static DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
     private static String propiedadDeDestino = System.getProperty("DestinoBitacora");
 
-    public static void registrar(String mensaje) {
+    static void registrar(String mensaje) {
         LocalDateTime fechaDelInstante = LocalDateTime.now();
         String fechaFormateada = fechaDelInstante.format(formateadorDeFecha);
 
