@@ -1,4 +1,7 @@
 package ar.edu.untref.dyasc;
 
-public class Impresora {
+interface Impresora {
+
+    void imprimir();
+
 }

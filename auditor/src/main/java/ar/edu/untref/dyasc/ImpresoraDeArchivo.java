@@ -1,6 +1,6 @@
 package ar.edu.untref.dyasc;
 
-public class ImpresoraDeConsola implements Impresora{
+public class ImpresoraDeArchivo implements Impresora{
 
     @Override
     public void imprimir() {
