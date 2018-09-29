@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 class Bitacora {
 
     private static DateTimeFormatter formateadorDeFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-    private static String propiedadDeDestino = System.getProperty("DestinoBitacora");
+    private static String propiedadDeDestino = System.getProperty("bitacora.destino");
 
     static void registrar(String mensaje) {
         LocalDateTime fechaDelInstante = LocalDateTime.now();
@@ -19,7 +19,7 @@ class Bitacora {
 
         String textoARegistrar = fechaFormateada + " - " + mensaje;
 
-        if (propiedadDeDestino != null) {
+        if (!propiedadDeDestino.equals("CONSOLA")) {
             agregarLineaEnArchivoDeBitacora(textoARegistrar);
         } else {
             System.out.println(textoARegistrar);
