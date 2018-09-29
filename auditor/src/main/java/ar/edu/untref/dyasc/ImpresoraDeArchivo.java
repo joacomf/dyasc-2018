@@ -2,20 +2,16 @@ package ar.edu.untref.dyasc;
 
 import java.io.*;
 
-public class ImpresoraDeArchivo extends Impresora{
+public class ImpresoraDeArchivo implements Imprimible {
 
-    private static Impresora instanciaDeImpresora = new ImpresoraDeArchivo();
-    private static String archivoDestino;
+    private String archivoDestino;
 
-    private ImpresoraDeArchivo(){}
-
-    static Impresora getInstance(String destino) {
-        ImpresoraDeArchivo.archivoDestino = destino;
-        return instanciaDeImpresora;
+    ImpresoraDeArchivo(String archivo){
+        this.archivoDestino = archivo;
     }
 
     public void imprimir(String texto) {
-        File archivo = new File(archivoDestino);
+        File archivo = new File(this.archivoDestino);
 
         try {
             Writer escritor = new FileWriter(archivo, true);
