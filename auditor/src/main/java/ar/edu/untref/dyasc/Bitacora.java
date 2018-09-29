@@ -1,10 +1,5 @@
 package ar.edu.untref.dyasc;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -19,24 +14,14 @@ class Bitacora {
 
         String textoARegistrar = fechaFormateada + " - " + mensaje;
 
+        Impresora impresora;
+
         if (!propiedadDeDestino.equals("CONSOLA")) {
-            agregarLineaEnArchivoDeBitacora(textoARegistrar);
+            impresora = ImpresoraDeArchivo.getInstance(propiedadDeDestino);
         } else {
-            System.out.println(textoARegistrar);
+            impresora = ImpresoraDeConsola.getInstance();
         }
-    }
 
-    private static void agregarLineaEnArchivoDeBitacora(String textoAImprimir) {
-        File archivo = new File(propiedadDeDestino);
-
-        try {
-            Writer escritor = new FileWriter(archivo, true);
-            BufferedWriter buffer = new BufferedWriter(escritor);
-            buffer.append(textoAImprimir);
-            buffer.append("\n");
-            buffer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        impresora.imprimir(textoARegistrar);
     }
 }

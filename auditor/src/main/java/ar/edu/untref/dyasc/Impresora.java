@@ -1,7 +1,6 @@
 package ar.edu.untref.dyasc;
 
-interface Impresora {
+abstract class Impresora {
 
-    void imprimir();
-
+    abstract void imprimir(String texto);
 }
