@@ -1,4 +1,4 @@
-package ar.edu.untref.dyasc;
+package ar.edu.untref.dyasc.impresion;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -8,7 +8,7 @@ public class AdministradorDeImpresoras implements Imprimible{
 
     private List<Imprimible> impresoras = new LinkedList<>();
 
-    AdministradorDeImpresoras(String textoDeOpciones){
+    public AdministradorDeImpresoras(String textoDeOpciones){
         String[] opciones = textoDeOpciones.split(",");
 
         Arrays.asList(opciones).forEach(this::crearPorTipo);

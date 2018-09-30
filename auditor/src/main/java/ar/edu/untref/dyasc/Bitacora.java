@@ -1,5 +1,8 @@
 package ar.edu.untref.dyasc;
 
+import ar.edu.untref.dyasc.impresion.AdministradorDeImpresoras;
+import ar.edu.untref.dyasc.impresion.Imprimible;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

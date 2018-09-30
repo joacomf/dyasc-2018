@@ -1,4 +1,4 @@
-package ar.edu.untref.dyasc;
+package ar.edu.untref.dyasc.impresion;
 
 public class ImpresoraDeConsola implements Imprimible {
 
