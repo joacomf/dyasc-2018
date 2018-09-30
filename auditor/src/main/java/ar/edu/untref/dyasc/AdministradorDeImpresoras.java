@@ -15,7 +15,6 @@ public class AdministradorDeImpresoras implements Imprimible{
     }
 
     private void crearPorTipo(String opcion) {
-        System.out.println(opcion);
         Imprimible impresora;
 
         if (!opcion.equals("CONSOLA")) {
