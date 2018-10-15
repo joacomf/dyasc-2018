@@ -8,11 +8,11 @@ class BatallaNaval {
         return this.barcos;
     }
 
-    public void añadirBote(Bote bote1, int x, int y) {
+    void añadirBote(Bote bote1, int x, int y) {
         this.barcos++;
     }
 
-    public void añadirCrucero(Crucero crucero, int x, int y) {
+    void añadirCrucero(Crucero crucero, int x, int y) {
         this.barcos++;
     }
 }

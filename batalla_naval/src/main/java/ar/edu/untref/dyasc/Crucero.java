@@ -1,7 +1,7 @@
 package ar.edu.untref.dyasc;
 
-public class Crucero {
+class Crucero {
 
-    public Crucero(boolean estaEnDireccionHorizontal) {
+    Crucero(boolean estaEnDireccionHorizontal) {
     }
 }
