@@ -29,7 +29,7 @@ public class BatallaNavalTest {
     }
 
     @Test
-    public void añadirCruceroConDireccionHorizontal(){
+    public void añadeCruceroConDireccionHorizontal(){
         BatallaNaval batallaNaval = new BatallaNaval();
         Crucero crucero = new Crucero(true);
 
