@@ -13,4 +13,18 @@ public class BatallaNavalTest {
 
         Assert.assertEquals(0, barcosEnJuego);
     }
+
+    @Test
+    public void iniciarJuegoCon2Botes(){
+        BatallaNaval batallaNaval = new BatallaNaval();
+        Bote bote1 = new Bote();
+        Bote bote2 = new Bote();
+
+        batallaNaval.añadirBote(bote1, 2, 2);
+        batallaNaval.añadirBote(bote2, 3, 3);
+
+        int barcosEnJuego = batallaNaval.barcosEnJuego();
+
+        Assert.assertEquals(2, barcosEnJuego);
+    }
 }
