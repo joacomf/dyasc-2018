@@ -27,4 +27,15 @@ public class BatallaNavalTest {
 
         Assert.assertEquals(2, barcosEnJuego);
     }
+
+    @Test
+    public void añadirCruceroConDireccionHorizontal(){
+        BatallaNaval batallaNaval = new BatallaNaval();
+        Crucero crucero = new Crucero(true);
+
+        batallaNaval.añadirCrucero(crucero, 3, 3);
+        int barcosEnJuego = batallaNaval.barcosEnJuego();
+
+        Assert.assertEquals(1, barcosEnJuego);
+    }
 }

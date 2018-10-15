@@ -11,4 +11,8 @@ class BatallaNaval {
     public void añadirBote(Bote bote1, int x, int y) {
         this.barcos++;
     }
+
+    public void añadirCrucero(Crucero crucero, int x, int y) {
+        this.barcos++;
+    }
 }
