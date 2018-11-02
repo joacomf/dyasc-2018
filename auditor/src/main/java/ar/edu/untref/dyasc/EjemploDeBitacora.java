@@ -1,16 +1,16 @@
 package ar.edu.untref.dyasc;
 
-public class EjemploDeBitacora {
+class EjemploDeBitacora {
 
-    public void registroMensajeDeError() {
+    void registroMensajeDeError() {
         Bitacora.registrar("Ha ocurrido un error al intentar ejecutar este metodo");
     }
 
-    public void registroConMensajeVacio() {
+    void registroConMensajeVacio() {
         Bitacora.registrar("");
     }
 
-    public void registroDentroDeUnaIteracion() {
+    void registroDentroDeUnaIteracion() {
         for (int i = 0; i < 3; i++) {
             Bitacora.registrar("Mensaje de información en iteración " + i);
         }

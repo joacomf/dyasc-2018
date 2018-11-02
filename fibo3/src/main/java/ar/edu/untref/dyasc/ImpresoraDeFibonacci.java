@@ -1,25 +1,25 @@
 package ar.edu.untref.dyasc;
 
+import ar.edu.untref.dyasc.interfaces.Fibonacci;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
-import ar.edu.untref.dyasc.interfaces.FibonacciInterface;
+class ImpresoraDeFibonacci {
 
-public class ImpresoraDeFibonacci {
-
+    private final Fibonacci fibonacci;
     private String separador = " ";
     private List<Long> listado;
     private String cabecera = "";
     private String caracterSecuencial = "";
-    private int dimension;
 
-    public ImpresoraDeFibonacci(FibonacciInterface fibonacci) {
-        inicializar(fibonacci);
+    ImpresoraDeFibonacci(Fibonacci fibonacci) {
+        this.fibonacci = fibonacci;
+        this.setListado(fibonacci.getSucesion());
     }
 
-    public ImpresoraDeFibonacci(FibonacciInterface fibonacci, boolean esHorizontal, boolean estaAlDerecho) {
+    ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho) {
         this(fibonacci);
 
         if (!esHorizontal) {
@@ -31,7 +31,7 @@ public class ImpresoraDeFibonacci {
         }
     }
 
-    public ImpresoraDeFibonacci(FibonacciInterface fibonacci, boolean esHorizontal, boolean estaAlDerecho, boolean esSumatoria) {
+    ImpresoraDeFibonacci(Fibonacci fibonacci, boolean esHorizontal, boolean estaAlDerecho, boolean esSumatoria) {
         this(fibonacci, esHorizontal, estaAlDerecho);
 
         if(esSumatoria) {
@@ -42,25 +42,18 @@ public class ImpresoraDeFibonacci {
         }
     }
 
-    private void inicializar(FibonacciInterface fibonacci) {
-        this.setListado(fibonacci.getSucesion());
-        this.setDimension(fibonacci.getDimension());
-    }
-
     private void generarCabecera() {
-        this.cabecera = "fibo<".concat(String.valueOf(this.dimension)).concat(">");
+        this.cabecera = "fibo<".concat(String.valueOf(this.fibonacci.getN())).concat(">");
         this.cabecera = this.cabecera.concat(this.caracterSecuencial );
         this.cabecera = this.cabecera.concat(":");
     }
 
-    public String imprimir() {
+    String imprimir() {
         this.generarCabecera();
         StringBuilder constructorDeString = new StringBuilder();
         constructorDeString.append(this.cabecera);
 
-        for (Iterator<Long> iterator = listado.iterator(); iterator.hasNext();) {
-            Long numeroEnLaSucesion = iterator.next();
-
+        for (Long numeroEnLaSucesion : listado) {
             constructorDeString.append(separador);
             constructorDeString.append(numeroEnLaSucesion);
         }
@@ -68,20 +61,12 @@ public class ImpresoraDeFibonacci {
         return constructorDeString.toString();
     }
 
-    public List<Long> getListado() {
+    private List<Long> getListado() {
         return listado;
     }
 
     private void setListado(List<Long> listado) {
         this.listado = listado;
-    }
-
-    public int getDimension() {
-        return dimension;
-    }
-
-    public void setDimension(int dimension) {
-        this.dimension = dimension;
     }
 
 }

@@ -5,9 +5,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class AdministradorDeArchivos {
+class AdministradorDeArchivos {
 
-    public void guardar(String textoAGuardar, String ruta, int grado) throws IOException {
+    void guardar(String textoAGuardar, String ruta, int grado) throws IOException {
 
         File archivo = new File(ruta);
     

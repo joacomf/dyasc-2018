@@ -3,22 +3,22 @@ package ar.edu.untref.dyasc;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.untref.dyasc.interfaces.FibonacciInterface;
+import ar.edu.untref.dyasc.interfaces.Fibonacci;
 
-public class Fibonacci implements FibonacciInterface{
+public class FibonacciSucesion implements Fibonacci {
 
-    List<Long> sucesion;
+    private List<Long> sucesion;
     private long sumatoria;
-    private int dimension;
+    private int N;
 
-    public Fibonacci() {
+    FibonacciSucesion() {
         this.sucesion = new ArrayList<>();
     }
 
     public void generarSucesion(int n) {
 
         this.setSumatoria(0);
-        this.setDimension(n);
+        this.setN(n);
 
         long anterior = 0;
         long actual = 1;
@@ -44,16 +44,16 @@ public class Fibonacci implements FibonacciInterface{
         return this.sumatoria;
     }
 
-    public void setSumatoria(long sumatoria) {
+    private void setSumatoria(long sumatoria) {
         this.sumatoria = sumatoria;
     }
 
-    public int getDimension() {
-        return dimension;
+    public int getN() {
+        return N;
     }
 
-    public void setDimension(int dimension) {
-        this.dimension = dimension;
+    private void setN(int n) {
+        this.N = n;
     }
 
 }

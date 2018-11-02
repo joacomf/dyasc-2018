@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 import ar.edu.untref.dyasc.excepciones.OpcionesNoValidasException;
 
-public class LectorDeParametros {
+class LectorDeParametros {
 
     private int iteraciones;
     private boolean debeIrAlDerecho = true;
@@ -13,33 +13,30 @@ public class LectorDeParametros {
     private boolean debeGuardarEnArchivo = false;
     private String nombreDeArchivo = "";
 
-    public LectorDeParametros(String[] parametros) throws OpcionesNoValidasException {
+    LectorDeParametros(String[] parametros) throws OpcionesNoValidasException {
         analizar(parametros);
     }
 
     private void analizar(String[] parametros) throws OpcionesNoValidasException {
-        for (int i = 0; i < parametros.length; i++) {
-            this.evaluarOpciones(parametros[i]);
+        for (String parametro : parametros) {
+            this.evaluarOpciones(parametro);
         }
     }
 
     private void evaluarOpciones(String opcion) throws OpcionesNoValidasException {
 
-        if (opcion.startsWith("-o=")) {
-            String[] opcionClaveValor = opcion.split("=");
-            String valorDeOpcion = opcionClaveValor[1];
+        if (opcion.startsWith("-") && opcion.contains("=")) {
 
-            this.evaluarOpcionDeImpresion(valorDeOpcion);
-        } else if (opcion.startsWith("-f=")) {
-            String[] opcionClaveValor = opcion.split("=");
-            String valorDeOpcion = opcionClaveValor[1];
+            String valorDeOpcion = opcion.split("=")[1];
+            char charOpcion = opcion.charAt(1);
 
-            this.evaluarSalidaEnArchivo(valorDeOpcion);
-        } else if (opcion.startsWith("-m=")) {
-            String[] opcionClaveValor = opcion.split("=");
-            String valorDeOpcion = opcionClaveValor[1];
-
-            this.evaluarSiEsSumatoria(valorDeOpcion);
+            if ( charOpcion == 'o') {
+                this.evaluarOpcionDeImpresion(valorDeOpcion);
+            } else if (charOpcion == 'f') {
+                this.evaluarSalidaEnArchivo(valorDeOpcion);
+            } else if (charOpcion == 'm') {
+                this.evaluarSiEsSumatoria(valorDeOpcion);
+            }
         } else {
             this.setIteraciones(Integer.valueOf(opcion));
         }
@@ -65,43 +62,43 @@ public class LectorDeParametros {
         this.debeSerHorizontal = valorDeLaOpcion.contains("h");
     }
 
-    public boolean debeIrAlDerecho() {
+    boolean debeIrAlDerecho() {
         return debeIrAlDerecho;
     }
 
-    public boolean debeSerHorizontal() {
+    boolean debeSerHorizontal() {
         return debeSerHorizontal;
     }
 
-    public int getIteraciones() {
+    int getIteraciones() {
         return iteraciones;
     }
 
-    public void setIteraciones(int iteraciones) {
+    private void setIteraciones(int iteraciones) {
         this.iteraciones = iteraciones;
     }
 
-    public boolean debeGuardarEnArchivo() {
+    boolean debeGuardarEnArchivo() {
         return debeGuardarEnArchivo;
     }
 
-    public void setDebeGuardarEnArchivo(boolean debeGuardarEnArchivo) {
+    private void setDebeGuardarEnArchivo(boolean debeGuardarEnArchivo) {
         this.debeGuardarEnArchivo = debeGuardarEnArchivo;
     }
 
-    public String getNombreDeArchivo() {
+    String getNombreDeArchivo() {
         return nombreDeArchivo;
     }
 
-    public void setNombreDeArchivo(String nombreDeArchivo) {
+    private void setNombreDeArchivo(String nombreDeArchivo) {
         this.nombreDeArchivo = nombreDeArchivo;
     }
 
-    public boolean debeSerSumatoria() {
+    boolean debeSerSumatoria() {
         return this.debeSerSumatoria;
     }
 
-    public void setDebeSerSumatoria(boolean debeSerSumatoria) {
+    private void setDebeSerSumatoria(boolean debeSerSumatoria) {
         this.debeSerSumatoria = debeSerSumatoria;
     }
 

@@ -13,7 +13,7 @@ public class Ejecutable {
         try {
             lector = new LectorDeParametros(args);
 
-            Fibonacci fibonacci = new Fibonacci();
+            FibonacciSucesion fibonacci = new FibonacciSucesion();
             fibonacci.generarSucesion(lector.getIteraciones());
 
             ImpresoraDeFibonacci impresora = new ImpresoraDeFibonacci(fibonacci, lector.debeSerHorizontal(),
@@ -22,10 +22,10 @@ public class Ejecutable {
 
             if (lector.debeGuardarEnArchivo()) {
                 AdministradorDeArchivos administrador = new AdministradorDeArchivos();
-                administrador.guardar(textoDeLaImpresion, lector.getNombreDeArchivo(), fibonacci.getDimension() );
+                administrador.guardar(textoDeLaImpresion, lector.getNombreDeArchivo(), fibonacci.getN() );
+            } else {
+                System.out.println(textoDeLaImpresion);
             }
-
-            System.out.println(textoDeLaImpresion);
 
         } catch (OpcionesNoValidasException e) {
             System.out.println("Opciones no validas.");
