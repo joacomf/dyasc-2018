@@ -22,10 +22,10 @@ class BatallaNaval {
     void añadirCrucero(Crucero crucero, int x, int y) {
         this.barcos++;
 
-        this.colocarBarcoEnMapa(x, y);
+        this.colocarBarcoEnTablero(x, y);
     }
 
-    private void colocarBarcoEnMapa(int x, int y) {
+    private void colocarBarcoEnTablero(int x, int y) {
         if (x > this.dimensionHorizontal || y > this.dimensionVertical){
             throw new PosicionNoPermitidaException();
         }
