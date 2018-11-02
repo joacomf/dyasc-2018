@@ -39,14 +39,11 @@ public class BatallaNavalTest {
         Assert.assertEquals(1, barcosEnJuego);
     }
 
-    @Test
-    public void intentaUbicarCruceroEnUnMapaDe2por2(){
-        BatallaNaval batallaNaval = new BatallaNaval(2, 2);
+    @Test(expected = PosicionNoPermitidaException.class)
+    public void intentaUbicarCruceroEnPosicion5y5EnUnMapaDe3por3(){
+        BatallaNaval batallaNaval = new BatallaNaval(3, 3);
         Crucero crucero = new Crucero(true);
 
-        batallaNaval.añadirCrucero(crucero, 3, 3);
-        int barcosEnJuego = batallaNaval.barcosEnJuego();
-
-        Assert.assertEquals(1, barcosEnJuego);
+        batallaNaval.añadirCrucero(crucero, 5, 5);
     }
 }
