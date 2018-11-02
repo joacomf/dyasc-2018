@@ -33,7 +33,7 @@ public class BatallaNavalTest {
         BatallaNaval batallaNaval = new BatallaNaval(3, 3);
         Crucero crucero = new Crucero(true);
 
-        batallaNaval.añadirCrucero(crucero, 3, 3);
+        batallaNaval.añadirCrucero(crucero, 1, 3);
         int barcosEnJuego = batallaNaval.barcosEnJuego();
 
         Assert.assertEquals(1, barcosEnJuego);
@@ -45,5 +45,33 @@ public class BatallaNavalTest {
         Crucero crucero = new Crucero(true);
 
         batallaNaval.añadirCrucero(crucero, 5, 5);
+    }
+
+    @Test(expected = PosicionNoPermitidaException.class)
+    public void intentaUbicarBoteEnPosicion3y3EnUnMapaDe2por3(){
+        BatallaNaval batallaNaval = new BatallaNaval(2, 2);
+        Bote bote = new Bote();
+
+        batallaNaval.añadirBote(bote, 3, 3);
+    }
+
+    @Test(expected = PosicionNoPermitidaException.class)
+    public void intentaUbicarCruceroEnPosicion3y1EnUnMapaDe4por3EnPosicionHorizontal(){
+        BatallaNaval batallaNaval = new BatallaNaval(4, 3);
+        Crucero crucero = new Crucero(true);
+
+        batallaNaval.añadirCrucero(crucero, 3, 1);
+    }
+
+    @Test
+    public void intentaUbicarCruceroEnPosicion3y1EnUnMapaDe4por3EnPosicionVertical(){
+        BatallaNaval batallaNaval = new BatallaNaval(4, 3);
+        Crucero crucero = new Crucero(false);
+
+        batallaNaval.añadirCrucero(crucero, 3, 1);
+
+        int barcosEnJuego = batallaNaval.barcosEnJuego();
+
+        Assert.assertEquals(1, barcosEnJuego);
     }
 }

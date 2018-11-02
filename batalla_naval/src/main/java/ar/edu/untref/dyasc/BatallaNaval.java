@@ -17,16 +17,20 @@ class BatallaNaval {
 
     void añadirBote(Bote bote, int x, int y) {
         this.barcos++;
+        this.colocarBarcoEnTablero(bote, x, y);
     }
 
     void añadirCrucero(Crucero crucero, int x, int y) {
         this.barcos++;
-
-        this.colocarBarcoEnTablero(x, y);
+        this.colocarBarcoEnTablero(crucero, x, y);
     }
 
-    private void colocarBarcoEnTablero(int x, int y) {
-        if (x > this.dimensionHorizontal || y > this.dimensionVertical){
+    private void colocarBarcoEnTablero(Barco barco, int x, int y) {
+        if (
+                ((x > this.dimensionHorizontal) || (y > this.dimensionVertical)) ||
+                (barco.estaHorizontal() && (x + barco.obtenerDimension() - 1) > this.dimensionHorizontal)
+           )
+        {
             throw new PosicionNoPermitidaException();
         }
     }
