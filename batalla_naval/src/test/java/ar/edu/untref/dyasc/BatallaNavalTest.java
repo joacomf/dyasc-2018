@@ -40,7 +40,7 @@ public class BatallaNavalTest {
     }
 
     @Test(expected = PosicionNoPermitidaException.class)
-    public void intentaUbicarCruceroEnPosicion5y5EnUnMapaDe3por3(){
+    public void intentaUbicarCruceroEnPosicion5y5EnUnMapaDe3por3YRecibeExcepcion(){
         BatallaNaval batallaNaval = new BatallaNaval(3, 3);
         Crucero crucero = new Crucero(true);
 
@@ -48,7 +48,7 @@ public class BatallaNavalTest {
     }
 
     @Test(expected = PosicionNoPermitidaException.class)
-    public void intentaUbicarBoteEnPosicion3y3EnUnMapaDe2por3(){
+    public void intentaUbicarBoteEnPosicion3y3EnUnMapaDe2por3YRecibeExcepcion(){
         BatallaNaval batallaNaval = new BatallaNaval(2, 2);
         Bote bote = new Bote();
 
@@ -56,7 +56,7 @@ public class BatallaNavalTest {
     }
 
     @Test(expected = PosicionNoPermitidaException.class)
-    public void intentaUbicarCruceroEnPosicion3y1EnUnMapaDe4por3EnPosicionHorizontal(){
+    public void intentaUbicarCruceroEnPosicion3y1EnUnMapaDe4por3EnPosicionHorizontalYRecibeExcepcion(){
         BatallaNaval batallaNaval = new BatallaNaval(4, 3);
         Crucero crucero = new Crucero(true);
 
@@ -64,7 +64,7 @@ public class BatallaNavalTest {
     }
 
     @Test
-    public void intentaUbicarCruceroEnPosicion3y1EnUnMapaDe4por3EnPosicionVertical(){
+    public void ubicaCruceroEnPosicion3y1EnUnMapaDe4por3EnPosicionVertical(){
         BatallaNaval batallaNaval = new BatallaNaval(4, 3);
         Crucero crucero = new Crucero(false);
 
@@ -76,7 +76,7 @@ public class BatallaNavalTest {
     }
 
     @Test(expected = PosicionNoPermitidaException.class)
-    public void intentaUbicarCruceroEnPosicion1y3EnUnMapaDe4por3EnPosicionVertical(){
+    public void intentaUbicarCruceroEnPosicion1y3EnUnMapaDe4por3EnPosicionVerticalYRecibeExcepcion(){
         BatallaNaval batallaNaval = new BatallaNaval(4, 3);
         Crucero crucero = new Crucero(false);
 
