@@ -74,4 +74,12 @@ public class BatallaNavalTest {
 
         Assert.assertEquals(1, barcosEnJuego);
     }
+
+    @Test(expected = PosicionNoPermitidaException.class)
+    public void intentaUbicarCruceroEnPosicion1y3EnUnMapaDe4por3EnPosicionVertical(){
+        BatallaNaval batallaNaval = new BatallaNaval(4, 3);
+        Crucero crucero = new Crucero(false);
+
+        batallaNaval.añadirCrucero(crucero, 1, 3);
+    }
 }

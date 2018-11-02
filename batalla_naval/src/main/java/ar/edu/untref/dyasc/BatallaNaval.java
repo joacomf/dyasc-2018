@@ -28,7 +28,8 @@ class BatallaNaval {
     private void colocarBarcoEnTablero(Barco barco, int x, int y) {
         if (
                 ((x > this.dimensionHorizontal) || (y > this.dimensionVertical)) ||
-                (barco.estaHorizontal() && (x + barco.obtenerDimension() - 1) > this.dimensionHorizontal)
+                (barco.estaHorizontal() && ((x + barco.obtenerDimension() - 1) > this.dimensionHorizontal)) ||
+                (!barco.estaHorizontal() && ((y + barco.obtenerDimension() - 1) > this.dimensionVertical))
            )
         {
             throw new PosicionNoPermitidaException();
