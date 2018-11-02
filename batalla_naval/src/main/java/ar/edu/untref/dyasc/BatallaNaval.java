@@ -23,7 +23,17 @@ class BatallaNaval {
         this.tablero.colocar(crucero, x, y);
     }
 
-    public Resultado disparar(int x, int y) {
-        return Resultado.AGUA;
+    Resultado disparar(int x, int y) {
+
+        Resultado resultado = null;
+        Barco barco = this.tablero.obtener(x, y);
+
+        if (barco != null){
+            resultado = Resultado.TOCADO;
+        }else{
+            resultado = Resultado.AGUA;
+        }
+
+        return resultado;
     }
 }

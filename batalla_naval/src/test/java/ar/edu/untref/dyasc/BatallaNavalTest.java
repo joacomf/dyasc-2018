@@ -91,4 +91,15 @@ public class BatallaNavalTest {
 
         Assert.assertEquals(Resultado.AGUA, resultado);
     }
+
+    @Test
+    public void disparaAlTableroYTocaUnBarco(){
+        BatallaNaval batallaNaval = new BatallaNaval(4, 4);
+
+        batallaNaval.añadirCrucero(new Crucero(true), 1, 1);
+
+        Resultado resultado = batallaNaval.disparar(1, 1);
+
+        Assert.assertEquals(Resultado.TOCADO, resultado);
+    }
 }
