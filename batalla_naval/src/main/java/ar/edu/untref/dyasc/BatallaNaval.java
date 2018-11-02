@@ -13,19 +13,19 @@ class BatallaNaval {
         return this.barcos;
     }
 
-    void añadirBote(Bote bote, int x, int y) {
+    void agregarBote(Bote bote, int x, int y) {
         this.barcos++;
         this.tablero.colocar(bote, x, y);
     }
 
-    void añadirCrucero(Crucero crucero, int x, int y) {
+    void agregarCrucero(Crucero crucero, int x, int y) {
         this.barcos++;
         this.tablero.colocar(crucero, x, y);
     }
 
     Resultado disparar(int x, int y) {
 
-        Resultado resultado = null;
+        Resultado resultado;
         Barco barco = this.tablero.obtener(x, y);
 
         if (barco != null){

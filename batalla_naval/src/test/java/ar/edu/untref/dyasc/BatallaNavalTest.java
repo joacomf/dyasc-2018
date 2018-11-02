@@ -20,8 +20,8 @@ public class BatallaNavalTest {
         Bote bote1 = new Bote();
         Bote bote2 = new Bote();
 
-        batallaNaval.añadirBote(bote1, 2, 2);
-        batallaNaval.añadirBote(bote2, 3, 3);
+        batallaNaval.agregarBote(bote1, 2, 2);
+        batallaNaval.agregarBote(bote2, 3, 3);
 
         int barcosEnJuego = batallaNaval.barcosEnJuego();
 
@@ -33,7 +33,7 @@ public class BatallaNavalTest {
         BatallaNaval batallaNaval = new BatallaNaval(3, 3);
         Crucero crucero = new Crucero(true);
 
-        batallaNaval.añadirCrucero(crucero, 1, 3);
+        batallaNaval.agregarCrucero(crucero, 1, 3);
         int barcosEnJuego = batallaNaval.barcosEnJuego();
 
         Assert.assertEquals(1, barcosEnJuego);
@@ -44,7 +44,7 @@ public class BatallaNavalTest {
         BatallaNaval batallaNaval = new BatallaNaval(3, 3);
         Crucero crucero = new Crucero(true);
 
-        batallaNaval.añadirCrucero(crucero, 5, 5);
+        batallaNaval.agregarCrucero(crucero, 5, 5);
     }
 
     @Test(expected = PosicionNoPermitidaException.class)
@@ -52,7 +52,7 @@ public class BatallaNavalTest {
         BatallaNaval batallaNaval = new BatallaNaval(2, 2);
         Bote bote = new Bote();
 
-        batallaNaval.añadirBote(bote, 3, 3);
+        batallaNaval.agregarBote(bote, 3, 3);
     }
 
     @Test(expected = PosicionNoPermitidaException.class)
@@ -60,7 +60,7 @@ public class BatallaNavalTest {
         BatallaNaval batallaNaval = new BatallaNaval(4, 3);
         Crucero crucero = new Crucero(true);
 
-        batallaNaval.añadirCrucero(crucero, 3, 1);
+        batallaNaval.agregarCrucero(crucero, 3, 1);
     }
 
     @Test
@@ -68,7 +68,7 @@ public class BatallaNavalTest {
         BatallaNaval batallaNaval = new BatallaNaval(4, 3);
         Crucero crucero = new Crucero(false);
 
-        batallaNaval.añadirCrucero(crucero, 3, 1);
+        batallaNaval.agregarCrucero(crucero, 3, 1);
 
         int barcosEnJuego = batallaNaval.barcosEnJuego();
 
@@ -80,7 +80,7 @@ public class BatallaNavalTest {
         BatallaNaval batallaNaval = new BatallaNaval(4, 3);
         Crucero crucero = new Crucero(false);
 
-        batallaNaval.añadirCrucero(crucero, 1, 3);
+        batallaNaval.agregarCrucero(crucero, 1, 3);
     }
 
     @Test
@@ -96,9 +96,9 @@ public class BatallaNavalTest {
     public void disparaAlTableroYTocaUnBarco(){
         BatallaNaval batallaNaval = new BatallaNaval(4, 4);
 
-        batallaNaval.añadirCrucero(new Crucero(true), 1, 1);
+        batallaNaval.agregarCrucero(new Crucero(true), 2, 2);
 
-        Resultado resultado = batallaNaval.disparar(1, 1);
+        Resultado resultado = batallaNaval.disparar(2, 2);
 
         Assert.assertEquals(Resultado.TOCADO, resultado);
     }
