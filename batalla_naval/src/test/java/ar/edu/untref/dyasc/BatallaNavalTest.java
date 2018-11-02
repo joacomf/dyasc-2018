@@ -7,7 +7,7 @@ public class BatallaNavalTest {
 
     @Test
     public void iniciaBatallaNavalConTableroVacio(){
-        BatallaNaval batallaNaval = new BatallaNaval();
+        BatallaNaval batallaNaval = new BatallaNaval(1, 1);
 
         int barcosEnJuego = batallaNaval.barcosEnJuego();
 
@@ -16,7 +16,7 @@ public class BatallaNavalTest {
 
     @Test
     public void iniciarJuegoCon2Botes(){
-        BatallaNaval batallaNaval = new BatallaNaval();
+        BatallaNaval batallaNaval = new BatallaNaval(3, 3);
         Bote bote1 = new Bote();
         Bote bote2 = new Bote();
 
@@ -29,8 +29,19 @@ public class BatallaNavalTest {
     }
 
     @Test
-    public void añadeCruceroConDireccionHorizontal(){
-        BatallaNaval batallaNaval = new BatallaNaval();
+    public void ubicarCruceroConDireccionHorizontal(){
+        BatallaNaval batallaNaval = new BatallaNaval(3, 3);
+        Crucero crucero = new Crucero(true);
+
+        batallaNaval.añadirCrucero(crucero, 3, 3);
+        int barcosEnJuego = batallaNaval.barcosEnJuego();
+
+        Assert.assertEquals(1, barcosEnJuego);
+    }
+
+    @Test
+    public void intentaUbicarCruceroEnUnMapaDe2por2(){
+        BatallaNaval batallaNaval = new BatallaNaval(2, 2);
         Crucero crucero = new Crucero(true);
 
         batallaNaval.añadirCrucero(crucero, 3, 3);

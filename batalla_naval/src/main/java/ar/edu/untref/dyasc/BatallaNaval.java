@@ -4,6 +4,9 @@ class BatallaNaval {
 
     private int barcos = 0;
 
+    public BatallaNaval(int dimensionHorizontal, int dimensionVertical) {
+    }
+
     int barcosEnJuego() {
         return this.barcos;
     }
