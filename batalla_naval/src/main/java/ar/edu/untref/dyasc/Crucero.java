@@ -4,6 +4,7 @@ class Crucero implements Barco {
 
     private boolean estaHorizontal;
     private int dimension = 3;
+    private int vidasRestantes = 2;
 
     Crucero(boolean estaEnDireccionHorizontal) {
         this.estaHorizontal = estaEnDireccionHorizontal;
@@ -17,5 +18,17 @@ class Crucero implements Barco {
     @Override
     public boolean estaHorizontal() {
         return this.estaHorizontal;
+    }
+
+    @Override
+    public Resultado restarVida() {
+        boolean seHundio = --this.vidasRestantes == 0;
+
+        Resultado resultado = Resultado.TOCADO;
+        if (seHundio){
+            resultado = Resultado.HUNDIDO;
+        }
+
+        return resultado;
     }
 }

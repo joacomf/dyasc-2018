@@ -5,4 +5,6 @@ interface Barco {
     int obtenerDimension();
 
     boolean estaHorizontal();
+
+    Resultado restarVida();
 }
