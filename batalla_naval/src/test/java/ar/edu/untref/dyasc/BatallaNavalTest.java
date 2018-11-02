@@ -82,4 +82,13 @@ public class BatallaNavalTest {
 
         batallaNaval.añadirCrucero(crucero, 1, 3);
     }
+
+    @Test
+    public void dispararAlTableroEnUnLugarSinBarco() {
+        BatallaNaval batallaNaval = new BatallaNaval(4, 3);
+
+        Resultado resultado = batallaNaval.disparar(1, 1);
+
+        Assert.assertEquals(Resultado.AGUA, resultado);
+    }
 }

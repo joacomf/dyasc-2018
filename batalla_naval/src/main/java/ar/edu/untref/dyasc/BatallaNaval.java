@@ -22,4 +22,8 @@ class BatallaNaval {
         this.barcos++;
         this.tablero.colocar(crucero, x, y);
     }
+
+    public Resultado disparar(int x, int y) {
+        return Resultado.AGUA;
+    }
 }
