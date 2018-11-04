@@ -39,6 +39,11 @@ class BatallaNaval {
 
         if (barco != null){
             resultado = barco.restarVida();
+            this.tablero.quitar(x, y);
+
+            if (resultado == Resultado.HUNDIDO){
+                this.barcos--;
+            }
         }
 
         return resultado;

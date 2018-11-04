@@ -36,4 +36,8 @@ class Tablero {
     Barco obtener(int x, int y) {
         return this.casillas[x - 1][y - 1];
     }
+
+    void quitar(int x, int y) {
+        this.casillas[x - 1][y - 1] = null;
+    }
 }

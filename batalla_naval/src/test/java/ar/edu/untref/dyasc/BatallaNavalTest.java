@@ -128,4 +128,29 @@ public class BatallaNavalTest {
         Assert.assertEquals(Resultado.TOCADO, resultadoSegundoDisparo);
         Assert.assertEquals(Resultado.HUNDIDO, resultadoTercerDisparo);
     }
+
+    @Test
+    public void dispara3VecesAlTableroYHundeUnBarcoYLuegoVerificaAguaEnEsosCasilleros(){
+        BatallaNaval batallaNaval = new BatallaNaval(4, 4);
+
+        batallaNaval.agregarCrucero(new Crucero(false), 1, 1);
+
+        Resultado resultadoPrimerDisparo = batallaNaval.disparar(1, 1);
+        Resultado resultadoSegundoDisparo = batallaNaval.disparar(1, 2);
+        Resultado resultadoTercerDisparo = batallaNaval.disparar(1, 3);
+
+        Resultado resultadoCuartoDisparo = batallaNaval.disparar(1, 1);
+        Resultado resultadoQuintoDisparo = batallaNaval.disparar(1, 2);
+        Resultado resultadoSextoDisparo = batallaNaval.disparar(1, 3);
+
+        Assert.assertEquals(Resultado.TOCADO, resultadoPrimerDisparo);
+        Assert.assertEquals(Resultado.TOCADO, resultadoSegundoDisparo);
+        Assert.assertEquals(Resultado.HUNDIDO, resultadoTercerDisparo);
+
+        Assert.assertEquals(Resultado.AGUA, resultadoCuartoDisparo);
+        Assert.assertEquals(Resultado.AGUA, resultadoQuintoDisparo);
+        Assert.assertEquals(Resultado.AGUA, resultadoSextoDisparo);
+
+        Assert.assertEquals(0, batallaNaval.barcosEnJuego());
+    }
 }
