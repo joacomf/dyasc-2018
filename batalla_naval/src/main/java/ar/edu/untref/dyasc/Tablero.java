@@ -26,7 +26,7 @@ class Tablero {
     }
 
     private boolean estaFuera(int x, int y) {
-        return (x > this.dimensionHorizontal) || (y > this.dimensionVertical);
+        return (x <= 0) || (y <= 0) || (x > this.dimensionHorizontal) || (y > this.dimensionVertical);
     }
 
     Barco obtener(int x, int y) {

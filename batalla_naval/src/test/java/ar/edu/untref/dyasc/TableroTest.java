@@ -18,4 +18,13 @@ public class TableroTest {
         Assert.assertEquals(bote, boteEnTablero);
     }
 
+    @Test(expected = PosicionNoPermitidaException.class)
+    public void tableroDe5por5NoPermiteColocarBoteEnPosicion0y0(){
+
+        Bote bote = new Bote();
+        Tablero tablero = new Tablero(5, 5);
+
+        tablero.colocar(bote, 0, 0);
+    }
+
 }
