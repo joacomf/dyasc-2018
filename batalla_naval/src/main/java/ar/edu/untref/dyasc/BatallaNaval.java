@@ -20,18 +20,25 @@ class BatallaNaval {
 
     void agregarCrucero(Crucero crucero, int x, int y) {
         this.barcos++;
-        this.tablero.colocar(crucero, x, y);
+
+        if (crucero.estaHorizontal()){
+            for (int i = x; i < crucero.obtenerDimension() + x; i++) {
+                this.tablero.colocar(crucero, i, y);
+            }
+        }else{
+            for (int i = y; i < crucero.obtenerDimension() + y; i++) {
+                this.tablero.colocar(crucero, x, i);
+            }
+        }
     }
 
     Resultado disparar(int x, int y) {
 
-        Resultado resultado;
+        Resultado resultado = Resultado.AGUA;
         Barco barco = this.tablero.obtener(x, y);
 
         if (barco != null){
-            resultado = Resultado.TOCADO;
-        }else{
-            resultado = Resultado.AGUA;
+            resultado = barco.restarVida();
         }
 
         return resultado;

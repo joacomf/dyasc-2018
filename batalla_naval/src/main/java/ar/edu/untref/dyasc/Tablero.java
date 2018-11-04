@@ -20,17 +20,9 @@ class Tablero {
     }
 
     private void verificarPosicionCorrecta(Barco barco, int x, int y) {
-        if (estaFuera(x, y) || sobrepasaLimiteHorizontal(barco, x) || sobrePasaLimiteVertical(barco, y)) {
+        if (estaFuera(x, y)) {
             throw new PosicionNoPermitidaException();
         }
-    }
-
-    private boolean sobrePasaLimiteVertical(Barco barco, int y) {
-        return !barco.estaHorizontal() && ((y + barco.obtenerDimension() - 1) > this.dimensionVertical);
-    }
-
-    private boolean sobrepasaLimiteHorizontal(Barco barco, int x) {
-        return barco.estaHorizontal() && ((x + barco.obtenerDimension() - 1) > this.dimensionHorizontal);
     }
 
     private boolean estaFuera(int x, int y) {
