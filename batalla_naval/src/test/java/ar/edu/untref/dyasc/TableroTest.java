@@ -36,5 +36,20 @@ public class TableroTest {
         tablero.colocar(bote, -1, -2);
     }
 
+    @Test
+    public void tableroDe5por5PermiteInsertarBoteEnPosicionVertical3yOtroBoteEnPosicionVertical4(){
 
+        Barco bote1 = new Bote();
+        Barco bote2 = new Bote();
+        Tablero tablero = new Tablero(5, 5);
+
+        tablero.colocar(bote1, 1, 1);
+        tablero.colocar(bote2, 1, 2);
+
+        Barco bote1EnTablero = tablero.obtener(1, 1);
+        Barco bote2EnTablero = tablero.obtener(1, 2);
+
+        Assert.assertEquals(bote1, bote1EnTablero);
+        Assert.assertEquals(bote2, bote2EnTablero);
+    }
 }
