@@ -27,4 +27,14 @@ public class TableroTest {
         tablero.colocar(bote, 0, 0);
     }
 
+    @Test(expected = PosicionNoPermitidaException.class)
+    public void tableroDe5por5NoPermiteColocarBoteEnPosicionesNegativa(){
+
+        Bote bote = new Bote();
+        Tablero tablero = new Tablero(5, 5);
+
+        tablero.colocar(bote, -1, -2);
+    }
+
+
 }
