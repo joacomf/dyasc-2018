@@ -20,9 +20,13 @@ class Tablero {
     }
 
     private void verificarPosicionCorrecta(Barco barco, int x, int y) {
-        if (estaFuera(x, y)) {
+        if (estaFuera(x, y) || estaOcupado(x, y)) {
             throw new PosicionNoPermitidaException();
         }
+    }
+
+    private boolean estaOcupado(int x, int y) {
+        return this.obtener(x, y) != null;
     }
 
     private boolean estaFuera(int x, int y) {

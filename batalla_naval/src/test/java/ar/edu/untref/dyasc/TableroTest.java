@@ -52,4 +52,15 @@ public class TableroTest {
         Assert.assertEquals(bote1, bote1EnTablero);
         Assert.assertEquals(bote2, bote2EnTablero);
     }
+
+    @Test(expected = PosicionNoPermitidaException.class)
+    public void intentaColocarDosBotesEnElMismoCasilleroYSeRecibeExcepcion(){
+
+        Barco bote1 = new Bote();
+        Barco bote2 = new Bote();
+        Tablero tablero = new Tablero(5, 5);
+
+        tablero.colocar(bote1, 1, 1);
+        tablero.colocar(bote2, 1, 1);
+    }
 }
